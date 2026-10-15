@@ -3,23 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SASYĀ-AIR | Ancient Mauryan Aerobiology & 3D Saptānga Architecture</title>
+  <title>SASYĀ-AIR | Sovereign Aerobiology & Kautilya Saptānga Experience</title>
   
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Yatra+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Three.js + OrbitControls for 3D navigation -->
+  <!-- Three.js + OrbitControls -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  
-  <!-- GSAP for World-Class UI Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -30,12 +26,12 @@
         extend: {
           colors: {
             mauryan: {
-              950: '#070402',
-              900: '#110a05',
-              850: '#1a1008',
-              800: '#26180d',
-              700: '#3d2514',
-              gold: '#e5a93b',
+              950: '#080402',
+              900: '#120904',
+              850: '#1a0e07',
+              800: '#27150a',
+              700: '#3d2010',
+              gold: '#e6a838',
               goldLight: '#ffd67a',
               amber: '#d97706',
               terracotta: '#c85a2b',
@@ -46,8 +42,8 @@
           },
           fontFamily: {
             royal: ['Cinzel', 'serif'],
-            royalDeco: ['"Cinzel Decorative"', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            vedic: ['"Rozha One"', 'serif'],
             devanagari: ['"Yatra One"', 'cursive']
           }
         }
@@ -58,94 +54,93 @@
   <style>
     /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #070402; }
-    ::-webkit-scrollbar-thumb { background: #3d2514; border-radius: 4px; border: 1px solid #e5a93b; }
-    ::-webkit-scrollbar-thumb:hover { background: #e5a93b; }
+    ::-webkit-scrollbar-track { background: #080402; }
+    ::-webkit-scrollbar-thumb { background: #3d2010; border-radius: 4px; border: 1px solid #e6a838; }
+    ::-webkit-scrollbar-thumb:hover { background: #e6a838; }
 
-    /* Royal Gradient Utilities */
-    .text-gold-gradient {
-      background: linear-gradient(135deg, #fff2cc 0%, #ffd67a 25%, #e5a93b 60%, #9e6c1a 100%);
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fff5dc 0%, #ffd67a 25%, #e6a838 60%, #b87518 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .text-terracotta-gradient {
-      background: linear-gradient(135deg, #ffb396 0%, #c85a2b 50%, #7e2411 100%);
+    .terracotta-gradient-text {
+      background: linear-gradient(135deg, #ffb89e 0%, #c85a2b 50%, #7e2411 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .gold-glow {
-      box-shadow: 0 0 35px rgba(229, 169, 59, 0.25);
+    .mauryan-card {
+      background: linear-gradient(180deg, rgba(26, 14, 7, 0.9) 0%, rgba(14, 7, 3, 0.95) 100%);
+      border: 1px solid rgba(230, 168, 56, 0.25);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .gold-border {
-      border: 1px solid rgba(229, 169, 59, 0.3);
-    }
-    .gold-border-active {
-      border: 1px solid rgba(229, 169, 59, 0.9);
-      box-shadow: 0 0 25px rgba(229, 169, 59, 0.35);
+    .mauryan-card-active {
+      border: 1px solid rgba(230, 168, 56, 0.85);
+      box-shadow: 0 0 35px rgba(230, 168, 56, 0.25);
     }
     .parchment-pattern {
-      background-image: radial-gradient(rgba(229, 169, 59, 0.08) 1.5px, transparent 0);
-      background-size: 28px 28px;
+      background-image: radial-gradient(rgba(230, 168, 56, 0.08) 1.5px, transparent 0);
+      background-size: 32px 32px;
     }
-    .pillar-glass {
-      background: rgba(22, 13, 7, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(229, 169, 59, 0.25);
-    }
-
-    /* Keyframes for breathing light */
-    @keyframes royalAura {
+    @keyframes torchFlicker {
       0%, 100% { opacity: 0.35; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.08); }
+      50% { opacity: 0.65; transform: scale(1.08); }
     }
-    .animate-aura {
-      animation: royalAura 5s infinite ease-in-out;
+    .animate-torch {
+      animation: torchFlicker 6s infinite ease-in-out;
     }
-    @keyframes floatSoft {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-    .animate-float {
-      animation: floatSoft 4s infinite ease-in-out;
+    @keyframes smokeDrift {
+      0% { transform: translateY(0px) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-40px) scale(1.3); opacity: 0; }
     }
   </style>
 </head>
 
 <body class="bg-mauryan-950 text-[#ede0d4] font-sans antialiased overflow-x-hidden selection:bg-mauryan-gold selection:text-mauryan-950">
 
-  <!-- TOP ROYAL ANNOUNCEMENT -->
-  <div class="bg-gradient-to-r from-mauryan-900 via-[#3a1d0d] to-mauryan-900 border-b border-mauryan-gold/30 text-center py-2 px-4 text-xs tracking-widest uppercase font-royal text-mauryan-goldLight flex items-center justify-center gap-3">
-    <span class="inline-block w-2 h-2 rounded-full bg-mauryan-gold animate-ping"></span>
-    <span>Imperial Innovation &bull; Formulated from Arthashastra Book XIV (300 BCE)</span>
-    <span class="hidden md:inline-block text-[10px] bg-mauryan-gold/20 text-mauryan-gold px-2.5 py-0.5 rounded-full border border-mauryan-gold/40">Ayush Certified</span>
+  <!-- ========================================================================= -->
+  <!-- AUDIO & ATMOSPHERIC SOUND CONTROLLER (WEB AUDIO API)                     -->
+  <!-- ========================================================================= -->
+  <div class="fixed bottom-6 left-6 z-50 flex items-center gap-2">
+    <button onclick="toggleMauryanAudio()" id="sound-btn" class="px-4 py-2.5 rounded-full bg-mauryan-850/95 border border-mauryan-gold/50 hover:border-mauryan-gold text-mauryan-goldLight text-xs font-royal flex items-center gap-2.5 shadow-2xl backdrop-blur-md transition-all hover:scale-105">
+      <i data-lucide="volume-2" id="sound-icon" class="w-4 h-4 text-mauryan-gold"></i>
+      <span id="sound-text">Play Royal Soundscape</span>
+    </button>
   </div>
 
-  <!-- NAVIGATION -->
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-mauryan-950/85 border-b border-mauryan-gold/20 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <!-- ROYAL TOP NOTIFICATION -->
+  <div class="bg-gradient-to-r from-mauryan-950 via-[#3a1b0b] to-mauryan-950 border-b border-mauryan-gold/30 text-center py-2 px-4 text-xs tracking-widest uppercase font-royal text-mauryan-goldLight flex items-center justify-center gap-3">
+    <span class="inline-block w-2 h-2 rounded-full bg-mauryan-gold animate-ping"></span>
+    <span>Imperial Innovation from Arthashastra Book XIV &bull; Saptānga Architecture</span>
+    <span class="hidden md:inline-block text-[10px] bg-mauryan-gold/20 text-mauryan-gold px-2.5 py-0.5 rounded-full border border-mauryan-gold/40">Ayush Certified Phyto-Actives</span>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- CLEAN, UNCLUTTERED HEADER NAVIGATION (NO OVERLAPS)                        -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-mauryan-950/90 border-b border-mauryan-gold/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
-      <!-- Brand Logo -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-mauryan-gold via-mauryan-terracotta to-mauryan-amber p-0.5 shadow-lg shadow-mauryan-gold/20 group-hover:scale-105 transition-transform">
+      <!-- Brand Logo & Tagline -->
+      <a href="#hero" class="flex items-center gap-3 shrink-0 group">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-mauryan-gold via-mauryan-terracotta to-mauryan-amber p-0.5 shadow-lg shadow-mauryan-gold/20 group-hover:scale-105 transition-transform">
           <div class="w-full h-full rounded-full bg-mauryan-950 flex items-center justify-center border border-mauryan-gold/40">
-            <span class="font-devanagari text-2xl text-mauryan-goldLight">स</span>
+            <span class="font-devanagari text-xl text-mauryan-goldLight">स</span>
           </div>
         </div>
         <div>
-          <div class="flex items-center gap-2">
-            <span class="font-royal font-black text-2xl tracking-wider text-gold-gradient">SASYĀ-AIR</span>
-            <span class="text-[9px] font-royal uppercase px-2 py-0.5 bg-mauryan-gold/20 text-mauryan-gold rounded border border-mauryan-gold/40 font-bold">3D Architecture</span>
+          <div class="flex items-center gap-1.5">
+            <span class="font-royal font-black text-xl tracking-wider gold-gradient-text">SASYĀ-AIR</span>
           </div>
-          <p class="text-[10px] tracking-widest text-[#a88f7b] uppercase font-royal">Kautilya Saptānga Aerobiology</p>
+          <p class="text-[9px] tracking-widest text-[#a88f7b] uppercase font-royal">Kautilya Saptānga Aerobiology</p>
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden lg:flex items-center gap-7 font-royal text-sm text-[#d4c3b3]">
+      <!-- Desktop Nav Links (Clean Spacing, No Overlapping Badges) -->
+      <nav class="hidden lg:flex items-center gap-8 font-royal text-xs uppercase tracking-wider text-[#d4c3b3]">
         <a href="#about-decline" class="hover:text-mauryan-gold transition-colors">Decline Story</a>
-        <a href="#saptanga-3d-arena" class="text-mauryan-gold font-bold flex items-center gap-1.5 hover:text-mauryan-goldLight transition-colors">
-          <span class="w-2 h-2 rounded-full bg-mauryan-gold animate-ping"></span> 3D 7 Pillars Arena
+        <a href="#saptanga-3d-arena" class="text-mauryan-gold hover:text-mauryan-goldLight transition-colors font-bold flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-mauryan-gold animate-ping"></span>
+          <span>3D 7 Pillars</span>
         </a>
         <a href="#3d-pod-explorer" class="hover:text-mauryan-gold transition-colors">3D Pod</a>
         <a href="#ingredients" class="hover:text-mauryan-gold transition-colors">Botanicals</a>
@@ -155,13 +150,13 @@
       </nav>
 
       <!-- Cart Button & CTA -->
-      <div class="flex items-center gap-4">
-        <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-mauryan-850 border border-mauryan-gold/40 hover:border-mauryan-gold hover:bg-mauryan-800 transition-all text-mauryan-goldLight flex items-center justify-center shadow-lg shadow-black/50">
+      <div class="flex items-center gap-3 shrink-0">
+        <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-mauryan-850 border border-mauryan-gold/40 hover:border-mauryan-gold transition-all text-mauryan-goldLight flex items-center justify-center shadow-lg">
           <i data-lucide="shopping-bag" class="w-5 h-5"></i>
           <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-mauryan-terracotta text-white font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center border border-[#140c06]">0</span>
         </button>
 
-        <a href="#pricing" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-mauryan-gold via-mauryan-amber to-mauryan-terracotta text-mauryan-950 font-black font-royal text-xs tracking-wider uppercase hover:shadow-xl hover:shadow-mauryan-gold/25 hover:scale-105 transition-all">
+        <a href="#pricing" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-mauryan-gold via-mauryan-amber to-mauryan-terracotta text-mauryan-950 font-black font-royal text-xs tracking-wider uppercase hover:shadow-lg hover:shadow-mauryan-gold/25 transition-all">
           <span>Get Starter Pod</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </a>
@@ -174,9 +169,9 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <div id="mobile-nav" class="hidden lg:hidden bg-mauryan-900 border-b border-mauryan-gold/20 px-6 py-4 space-y-3 font-royal text-sm">
+    <div id="mobile-nav" class="hidden lg:hidden bg-mauryan-900 border-b border-mauryan-gold/20 px-6 py-4 space-y-3 font-royal text-xs uppercase tracking-wider">
       <a href="#about-decline" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">Decline Story & Revival</a>
-      <a href="#saptanga-3d-arena" onclick="toggleMobileNav()" class="block py-2 text-mauryan-gold font-bold">✨ 3D Saptānga 7 Pillars Arena</a>
+      <a href="#saptanga-3d-arena" onclick="toggleMobileNav()" class="block py-2 text-mauryan-gold font-bold">3D Saptānga 7 Pillars Arena</a>
       <a href="#3d-pod-explorer" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">3D Chalice Pod</a>
       <a href="#ingredients" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">Botanical Alchemy</a>
       <a href="#why-buy" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">Why People Will Buy</a>
@@ -186,13 +181,13 @@
   </header>
 
   <!-- ========================================================================= -->
-  <!-- HERO SECTION WITH CINEMATIC SUNSET AMBIENCE & 3D POD PREVIEW -->
+  <!-- HERO SECTION WITH CINEMATIC PALACE AMBIENCE & 3D POD                     -->
   <!-- ========================================================================= -->
-  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-10 pb-20 parchment-pattern">
+  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-8 pb-16 parchment-pattern">
     
-    <!-- Royal Ambient Glows (Matches User Poster Tones) -->
-    <div class="absolute inset-0 bg-radial-gradient from-[#2a1408] via-mauryan-950 to-[#070402] -z-20"></div>
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[750px] h-[500px] bg-mauryan-terracotta/25 blur-[140px] rounded-full -z-10 pointer-events-none animate-aura"></div>
+    <!-- Warm Royal Ambient Backdrop -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#2a1306] via-mauryan-950 to-[#080402] -z-20"></div>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-mauryan-terracotta/20 blur-[130px] rounded-full -z-10 pointer-events-none animate-torch"></div>
     <div class="absolute -bottom-10 inset-x-0 h-40 bg-gradient-to-t from-mauryan-950 to-transparent -z-10"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -200,45 +195,45 @@
       <!-- Left Hero Text -->
       <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
         
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mauryan-gold/10 border border-mauryan-gold/30 text-mauryan-goldLight text-xs tracking-wider uppercase font-royal animate-float">
-          <i data-lucide="crown" class="w-4 h-4 text-mauryan-gold"></i>
-          <span>Reimagining Kautilya's Arthashastra (300 BCE)</span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-mauryan-gold/10 border border-mauryan-gold/30 text-mauryan-goldLight text-xs tracking-wider uppercase font-royal">
+          <i data-lucide="crown" class="w-3.5 h-3.5 text-mauryan-gold"></i>
+          <span>Arthashastra Aerobiology &bull; 300 BCE</span>
         </div>
 
         <h1 class="text-4xl sm:text-6xl font-royal font-black tracking-tight leading-[1.12]">
           Clean Air as Conceived by <br/>
-          <span class="text-gold-gradient">Chanakya.</span> <br/>
-          <span class="text-terracotta-gradient">Powered by 3D Saptānga.</span>
+          <span class="gold-gradient-text">Chanakya.</span> <br/>
+          <span class="terracotta-gradient-text">Protected by Saptānga.</span>
         </h1>
 
-        <p class="text-lg text-[#cbb6a6] max-w-2xl font-normal leading-relaxed">
-          The world’s first <strong class="text-mauryan-gold">3-in-1 botanical aerobiology pod</strong>. Purifies PM2.5 city smog, creates an invisible organic shield against mosquitoes, and calms brain fatigue—grounded in the <span class="text-white underline decoration-mauryan-gold underline-offset-4">7 Sovereign Pillars of Empire</span>.
+        <p class="text-base sm:text-lg text-[#cbb6a6] max-w-2xl font-normal leading-relaxed">
+          The world’s first <strong class="text-mauryan-gold">3-in-1 botanical aerobiology pod</strong>. Purifies PM2.5 city smog, creates an invisible organic perimeter against mosquitoes, and calms brain fatigue—modeled on the <span class="text-white underline decoration-mauryan-gold underline-offset-4 font-semibold">7 Sovereign Pillars of Empire</span>.
         </p>
 
         <!-- Stats Pills -->
         <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg mx-auto lg:mx-0">
-          <div class="bg-mauryan-900/90 p-3.5 rounded-xl border border-mauryan-gold/25 text-center">
+          <div class="bg-mauryan-900/90 p-3 rounded-xl border border-mauryan-gold/20 text-center">
             <span class="block text-2xl font-black font-royal text-mauryan-gold">0%</span>
-            <span class="text-[11px] text-[#9c8676] uppercase tracking-wide">Chemical Neurotoxins</span>
+            <span class="text-[10px] text-[#9c8676] uppercase tracking-wide">Chemical Neurotoxins</span>
           </div>
-          <div class="bg-mauryan-900/90 p-3.5 rounded-xl border border-mauryan-gold/25 text-center">
+          <div class="bg-mauryan-900/90 p-3 rounded-xl border border-mauryan-gold/20 text-center">
             <span class="block text-2xl font-black font-royal text-mauryan-goldLight">99.4%</span>
-            <span class="text-[11px] text-[#9c8676] uppercase tracking-wide">Mosquito Repulsion</span>
+            <span class="text-[10px] text-[#9c8676] uppercase tracking-wide">Mosquito Repulsion</span>
           </div>
-          <div class="bg-mauryan-900/90 p-3.5 rounded-xl border border-mauryan-gold/25 text-center">
+          <div class="bg-mauryan-900/90 p-3 rounded-xl border border-mauryan-gold/20 text-center">
             <span class="block text-2xl font-black font-royal text-mauryan-terracotta">7</span>
-            <span class="text-[11px] text-[#9c8676] uppercase tracking-wide">Saptānga Pillars</span>
+            <span class="text-[10px] text-[#9c8676] uppercase tracking-wide">Saptānga Pillars</span>
           </div>
         </div>
 
         <!-- Action CTAs -->
         <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-          <a href="#saptanga-3d-arena" class="px-8 py-4 rounded-full bg-gradient-to-r from-mauryan-gold via-mauryan-amber to-mauryan-terracotta text-mauryan-950 font-royal font-black text-sm tracking-wider uppercase hover:shadow-2xl hover:shadow-mauryan-gold/30 hover:scale-105 transition-all flex items-center gap-3">
-            <i data-lucide="compass" class="w-5 h-5 text-mauryan-950"></i>
-            <span>Enter 3D 7 Pillars Arena</span>
+          <a href="#saptanga-3d-arena" class="px-7 py-3.5 rounded-full bg-gradient-to-r from-mauryan-gold via-mauryan-amber to-mauryan-terracotta text-mauryan-950 font-royal font-black text-xs tracking-wider uppercase hover:shadow-2xl hover:scale-105 transition-all flex items-center gap-2.5">
+            <i data-lucide="compass" class="w-4 h-4 text-mauryan-950"></i>
+            <span>Walk the 3D 7 Pillars Arena</span>
           </a>
           
-          <button onclick="addToCart('Sasyā-Air Sovereign Pod (Starter Kit)', 2999, 'Ceramic Terracotta + 2 Pods')" class="px-7 py-4 rounded-full bg-mauryan-900 border border-mauryan-gold/40 text-mauryan-goldLight font-royal font-semibold text-sm hover:border-mauryan-gold hover:bg-mauryan-850 transition-all flex items-center gap-2">
+          <button onclick="addToCart('Sasyā-Air Sovereign Pod (Starter Kit)', 2999, 'Ceramic Terracotta + 2 Pods')" class="px-6 py-3.5 rounded-full bg-mauryan-900 border border-mauryan-gold/40 text-mauryan-goldLight font-royal font-semibold text-xs uppercase tracking-wider hover:border-mauryan-gold hover:bg-mauryan-850 transition-all flex items-center gap-2">
             <i data-lucide="zap" class="w-4 h-4 text-mauryan-gold"></i>
             <span>Pre-Order &bull; ₹2,999</span>
           </button>
@@ -254,7 +249,7 @@
       <!-- Right 3D Chalice Interactive Frame -->
       <div class="lg:col-span-5 relative flex flex-col items-center">
         
-        <div class="w-full max-w-md aspect-square rounded-3xl p-1 bg-gradient-to-b from-mauryan-gold/50 via-mauryan-terracotta/40 to-mauryan-gold/10 shadow-2xl shadow-mauryan-gold/20 relative">
+        <div class="w-full max-w-md aspect-square rounded-3xl p-1 bg-gradient-to-b from-mauryan-gold/40 via-mauryan-terracotta/30 to-mauryan-gold/10 shadow-2xl shadow-mauryan-gold/15 relative">
           
           <div class="w-full h-full rounded-[22px] bg-gradient-to-b from-mauryan-900 to-mauryan-950 relative overflow-hidden border border-mauryan-gold/30 flex flex-col items-center justify-center">
             
@@ -296,22 +291,22 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION: THE MASTERPIECE — 3D 7 PILLARS (SAPTĀNGA) INTERACTIVE ARENA -->
+  <!-- SECTION: THE MASTERPIECE — 3D 7 PILLARS (SAPTĀNGA) ARENA (HIGH-RES)      -->
   <!-- ========================================================================= -->
-  <section id="saptanga-3d-arena" class="py-24 bg-[#0a0603] border-t border-b border-mauryan-gold/20 relative">
+  <section id="saptanga-3d-arena" class="py-24 bg-[#080402] border-t border-b border-mauryan-gold/20 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mauryan-gold/15 border border-mauryan-gold/40 text-mauryan-goldLight text-xs tracking-wider uppercase font-royal">
-          <i data-lucide="sparkles" class="w-4 h-4 text-mauryan-gold"></i>
-          <span>Interactive 3D Saptānga Colosseum</span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-mauryan-gold/15 border border-mauryan-gold/40 text-mauryan-goldLight text-xs tracking-wider uppercase font-royal">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-mauryan-gold"></i>
+          <span>Kautilya's Imperial Statecraft in 3D</span>
         </div>
-        <h2 class="text-3xl sm:text-5xl font-royal font-black text-gold-gradient">
-          Explore Kautilya's 7 Pillars in 3D
+        <h2 class="text-3xl sm:text-5xl font-royal font-black gold-gradient-text">
+          Walk the 7 Pillars of Saptānga
         </h2>
-        <p class="text-base text-[#baa391]">
-          Click and rotate around the <strong>7 Ancient Stone Pillars of the Mauryan Empire</strong> in 3D. Click any glowing pillar to reveal its modern technological translation in Sasyā-Air.
+        <p class="text-sm sm:text-base text-[#baa391]">
+          In the <em>Arthashastra</em>, Kautilya proved an empire survives only when all 7 limbs are fortified. Rotate around the 3D Colosseum, click on any stone pillar or step through them using the controls below.
         </p>
       </div>
 
@@ -319,31 +314,38 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         
         <!-- Left: 3D Three.js Arena Viewport -->
-        <div class="lg:col-span-8 rounded-3xl bg-gradient-to-b from-mauryan-900 via-mauryan-950 to-[#050302] border-2 border-mauryan-gold/40 relative overflow-hidden flex flex-col justify-between shadow-2xl h-[520px]">
+        <div class="lg:col-span-8 rounded-3xl bg-gradient-to-b from-[#180d06] via-[#0e0703] to-[#040201] border-2 border-mauryan-gold/40 relative overflow-hidden flex flex-col justify-between shadow-2xl h-[520px]">
           
           <div id="saptanga-3d-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
 
           <!-- Top HUD Overlay -->
-          <div class="absolute top-4 left-4 pointer-events-none font-mono text-xs bg-mauryan-950/85 backdrop-blur-md p-3 rounded-xl border border-mauryan-gold/30 space-y-1">
+          <div class="absolute top-4 left-4 pointer-events-none font-mono text-xs bg-mauryan-950/90 backdrop-blur-md p-3 rounded-xl border border-mauryan-gold/30 space-y-1">
             <div class="text-mauryan-gold flex items-center gap-1.5 font-royal">
               <span class="w-2 h-2 rounded-full bg-mauryan-gold animate-ping"></span>
-              <span>ARENA: 7 Pillars of Statecraft</span>
+              <span>PATALIPUTRA DAIS: 7 Pillars</span>
             </div>
             <div class="text-[#cfb9a8] text-[11px]">🖱️ Click & Drag to Orbit Colosseum</div>
-            <div class="text-mauryan-goldLight text-[10px]">✨ Click any Pillar to Inspect</div>
+            <div class="text-mauryan-goldLight text-[10px]">✨ Click any Stone Column to Inspect</div>
+          </div>
+
+          <!-- Sound & Orbit Helper Badge -->
+          <div class="absolute top-4 right-4 pointer-events-none">
+            <span class="px-3 py-1.5 rounded-full bg-black/60 border border-mauryan-gold/30 text-[11px] font-royal text-mauryan-goldLight">
+              Auto-Rotate: Active
+            </span>
           </div>
 
           <!-- Bottom Control Bar -->
           <div class="absolute bottom-4 inset-x-4 flex flex-wrap items-center justify-between gap-2 pointer-events-none px-4 py-3 bg-mauryan-950/85 backdrop-blur-md rounded-2xl border border-mauryan-gold/25">
             <span class="text-xs text-[#a38d7b] font-royal flex items-center gap-2">
               <i data-lucide="compass" class="w-4 h-4 text-mauryan-gold"></i>
-              <span>Active Selection: <strong id="active-pillar-name" class="text-mauryan-goldLight font-bold">1. Svāmī (The Ruler)</strong></span>
+              <span>Inspecting: <strong id="active-pillar-name" class="text-mauryan-goldLight font-bold">1. Svāmī (The Ruler)</strong></span>
             </span>
             <div class="pointer-events-auto flex items-center gap-2">
-              <button onclick="prevPillar()" class="p-1.5 rounded-lg bg-mauryan-850 hover:bg-mauryan-gold hover:text-mauryan-950 text-mauryan-goldLight border border-mauryan-gold/30 transition-all">
+              <button onclick="prevPillar()" class="p-2 rounded-lg bg-mauryan-850 hover:bg-mauryan-gold hover:text-mauryan-950 text-mauryan-goldLight border border-mauryan-gold/30 transition-all">
                 <i data-lucide="chevron-left" class="w-4 h-4"></i>
               </button>
-              <button onclick="nextPillar()" class="p-1.5 rounded-lg bg-mauryan-850 hover:bg-mauryan-gold hover:text-mauryan-950 text-mauryan-goldLight border border-mauryan-gold/30 transition-all">
+              <button onclick="nextPillar()" class="p-2 rounded-lg bg-mauryan-850 hover:bg-mauryan-gold hover:text-mauryan-950 text-mauryan-goldLight border border-mauryan-gold/30 transition-all">
                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
               </button>
             </div>
@@ -351,11 +353,11 @@
 
         </div>
 
-        <!-- Right: Pillar Information Card (Dynamically updates when pillar is selected) -->
-        <div class="lg:col-span-4 flex flex-col justify-between p-8 rounded-3xl bg-mauryan-900 border-2 border-mauryan-gold/40 shadow-2xl relative overflow-hidden">
+        <!-- Right: Pillar Detail Card -->
+        <div class="lg:col-span-4 flex flex-col justify-between p-7 rounded-3xl mauryan-card relative overflow-hidden">
           
           <div class="space-y-4">
-            <div class="flex items-center justify-between border-b border-mauryan-gold/20 pb-4">
+            <div class="flex items-center justify-between border-b border-mauryan-gold/20 pb-3">
               <div>
                 <span id="card-pillar-number" class="text-xs font-royal uppercase text-mauryan-gold tracking-widest block font-bold">Pillar I &bull; Saptānga</span>
                 <h3 id="card-pillar-title" class="text-2xl font-royal font-black text-white">१. स्वामी (Svāmī)</h3>
@@ -366,17 +368,17 @@
             </div>
 
             <!-- Meaning in Ancient Arthashastra -->
-            <div class="bg-mauryan-950/80 p-4 rounded-xl border border-mauryan-gold/15 space-y-1">
-              <span class="text-[11px] font-royal uppercase tracking-wider text-mauryan-goldLight block font-semibold">Ancient Kautilyan Meaning:</span>
+            <div class="bg-mauryan-950/80 p-3.5 rounded-xl border border-mauryan-gold/15 space-y-1">
+              <span class="text-[10px] font-royal uppercase tracking-wider text-mauryan-goldLight block font-semibold">Ancient Kautilyan Meaning:</span>
               <p id="card-pillar-ancient" class="text-xs text-[#b8a292] leading-relaxed">
                 The Sovereign King. Kautilya stated that if the ruler is sluggish or sick, the entire empire collapses. The ruler's mental clarity, deep restorative sleep, and protection are paramount.
               </p>
             </div>
 
             <!-- Modern Feature in Sasyā-Air -->
-            <div class="bg-mauryan-950/80 p-4 rounded-xl border border-mauryan-terracotta/30 space-y-1">
-              <span class="text-[11px] font-royal uppercase tracking-wider text-mauryan-terracotta block font-semibold">Sasyā-Air Modern Feature:</span>
-              <h4 id="card-pillar-modern-title" class="text-sm font-royal font-bold text-white">Shanti Mode & Deep Neuro-Sleep</h4>
+            <div class="bg-mauryan-950/80 p-3.5 rounded-xl border border-mauryan-terracotta/30 space-y-1">
+              <span class="text-[10px] font-royal uppercase tracking-wider text-mauryan-terracotta block font-semibold">Sasyā-Air Modern Feature:</span>
+              <h4 id="card-pillar-modern-title" class="text-xs font-royal font-bold text-white">Shanti Mode & Deep Neuro-Sleep</h4>
               <p id="card-pillar-modern" class="text-xs text-[#b8a292] leading-relaxed">
                 Releases micro-atomized <em>Vacha & Jatamansi</em> root extract at night to lower cortisol, dissolve screen burnout, and induce deep REM sleep in 15 mins for the head of the household.
               </p>
@@ -390,8 +392,8 @@
           </div>
 
           <!-- Quick Navigation Pill Tabs -->
-          <div class="pt-6 border-t border-mauryan-gold/20 grid grid-cols-7 gap-1">
-            <button onclick="selectPillarByIndex(0)" id="pill-tab-0" class="py-1.5 rounded bg-mauryan-gold text-mauryan-950 font-bold font-royal text-xs text-center">1</button>
+          <div class="pt-5 border-t border-mauryan-gold/20 grid grid-cols-7 gap-1">
+            <button onclick="selectPillarByIndex(0)" id="pill-tab-0" class="py-1.5 rounded bg-mauryan-gold text-mauryan-950 font-bold font-royal text-xs text-center shadow-lg">1</button>
             <button onclick="selectPillarByIndex(1)" id="pill-tab-1" class="py-1.5 rounded bg-mauryan-850 text-white hover:bg-mauryan-gold/30 font-royal text-xs text-center border border-mauryan-gold/20">2</button>
             <button onclick="selectPillarByIndex(2)" id="pill-tab-2" class="py-1.5 rounded bg-mauryan-850 text-white hover:bg-mauryan-gold/30 font-royal text-xs text-center border border-mauryan-gold/20">3</button>
             <button onclick="selectPillarByIndex(3)" id="pill-tab-3" class="py-1.5 rounded bg-mauryan-850 text-white hover:bg-mauryan-gold/30 font-royal text-xs text-center border border-mauryan-gold/20">4</button>
@@ -408,7 +410,7 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION: ABOUT US & THE DECLINE STORY (Mandatory Guideline) -->
+  <!-- SECTION: ABOUT US & THE DECLINE STORY (Mandatory Guideline)              -->
   <!-- ========================================================================= -->
   <section id="about-decline" class="py-24 bg-mauryan-900 border-b border-mauryan-gold/20 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -417,7 +419,7 @@
         <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
           The Story of Decline & Modern Revival (USP)
         </span>
-        <h2 class="text-3xl sm:text-5xl font-royal font-black text-gold-gradient">
+        <h2 class="text-3xl sm:text-5xl font-royal font-black gold-gradient-text">
           How Ancient Aerobiology Was Forgotten
         </h2>
         <p class="text-base text-[#baa391]">
@@ -427,8 +429,8 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- Act 1: The Glory Era -->
-        <div class="bg-mauryan-850 rounded-3xl p-8 border border-mauryan-gold/25 hover:border-mauryan-gold transition-all space-y-4">
+        <!-- Act 1 -->
+        <div class="mauryan-card rounded-3xl p-8 space-y-4">
           <div class="w-12 h-12 rounded-2xl bg-mauryan-gold/15 border border-mauryan-gold/40 flex items-center justify-center text-mauryan-gold">
             <i data-lucide="crown" class="w-6 h-6"></i>
           </div>
@@ -439,8 +441,8 @@
           </p>
         </div>
 
-        <!-- Act 2: The Industrial Decline -->
-        <div class="bg-mauryan-850 rounded-3xl p-8 border border-mauryan-terracotta/35 hover:border-mauryan-terracotta transition-all space-y-4">
+        <!-- Act 2 -->
+        <div class="mauryan-card rounded-3xl p-8 space-y-4 border-mauryan-terracotta/40">
           <div class="w-12 h-12 rounded-2xl bg-mauryan-terracotta/20 border border-mauryan-terracotta/50 flex items-center justify-center text-mauryan-terracotta">
             <i data-lucide="flame" class="w-6 h-6"></i>
           </div>
@@ -451,8 +453,8 @@
           </p>
         </div>
 
-        <!-- Act 3: Sasyā-Air Revival (USP) -->
-        <div class="bg-mauryan-850 rounded-3xl p-8 border-2 border-mauryan-emerald/50 hover:border-mauryan-emerald transition-all space-y-4 bg-gradient-to-b from-mauryan-850 to-[#0e1713]">
+        <!-- Act 3 -->
+        <div class="mauryan-card rounded-3xl p-8 space-y-4 border-mauryan-emerald/50 bg-gradient-to-b from-mauryan-850 to-[#0e1713]">
           <div class="w-12 h-12 rounded-2xl bg-mauryan-emerald/20 border border-mauryan-emerald/50 flex items-center justify-center text-mauryan-emerald">
             <i data-lucide="sparkles" class="w-6 h-6"></i>
           </div>
@@ -469,7 +471,7 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION: 3D CHALICE POD WORKSTATION -->
+  <!-- SECTION: 3D CHALICE POD WORKSTATION                                       -->
   <!-- ========================================================================= -->
   <section id="3d-pod-explorer" class="py-24 bg-mauryan-950 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -478,7 +480,7 @@
         <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
           Hardware Architecture
         </span>
-        <h2 class="text-3xl sm:text-5xl font-royal font-black text-gold-gradient">
+        <h2 class="text-3xl sm:text-5xl font-royal font-black gold-gradient-text">
           The Sasyā-Air Sovereign Pod
         </h2>
         <p class="text-sm text-[#ab9482]">
@@ -486,7 +488,7 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-mauryan-900/80 rounded-3xl p-6 sm:p-10 border border-mauryan-gold/30">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mauryan-card rounded-3xl p-6 sm:p-10">
         
         <div class="lg:col-span-8 h-[460px] w-full rounded-2xl bg-gradient-to-b from-[#180f08] to-[#070402] border border-mauryan-gold/25 relative overflow-hidden flex items-center justify-center shadow-inner">
           <div id="large-pod-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
@@ -515,7 +517,7 @@
           </h3>
 
           <div class="space-y-3">
-            <button onclick="setChaliceMode('raksha')" id="btn-chalice-raksha" class="w-full p-4 rounded-xl border gold-border-active bg-mauryan-850 text-left transition-all flex items-center justify-between">
+            <button onclick="setChaliceMode('raksha')" id="btn-chalice-raksha" class="w-full p-4 rounded-xl border mauryan-card-active bg-mauryan-850 text-left transition-all flex items-center justify-between">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-lg bg-mauryan-terracotta/20 border border-mauryan-terracotta/40 flex items-center justify-center text-mauryan-terracotta">
                   <i data-lucide="shield" class="w-5 h-5"></i>
@@ -528,7 +530,7 @@
               <span class="w-3 h-3 rounded-full bg-mauryan-terracotta"></span>
             </button>
 
-            <button onclick="setChaliceMode('shanti')" id="btn-chalice-shanti" class="w-full p-4 rounded-xl border gold-border bg-mauryan-850 hover:bg-mauryan-800 text-left transition-all flex items-center justify-between">
+            <button onclick="setChaliceMode('shanti')" id="btn-chalice-shanti" class="w-full p-4 rounded-xl border border-mauryan-gold/30 bg-mauryan-850 hover:bg-mauryan-800 text-left transition-all flex items-center justify-between">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-lg bg-mauryan-gold/20 border border-mauryan-gold/40 flex items-center justify-center text-mauryan-gold">
                   <i data-lucide="moon" class="w-5 h-5"></i>
@@ -541,7 +543,7 @@
               <span class="w-3 h-3 rounded-full bg-mauryan-gold"></span>
             </button>
 
-            <button onclick="setChaliceMode('prana')" id="btn-chalice-prana" class="w-full p-4 rounded-xl border gold-border bg-mauryan-850 hover:bg-mauryan-800 text-left transition-all flex items-center justify-between">
+            <button onclick="setChaliceMode('prana')" id="btn-chalice-prana" class="w-full p-4 rounded-xl border border-mauryan-gold/30 bg-mauryan-850 hover:bg-mauryan-800 text-left transition-all flex items-center justify-between">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-lg bg-mauryan-teal/20 border border-mauryan-teal/40 flex items-center justify-center text-mauryan-teal">
                   <i data-lucide="wind" class="w-5 h-5"></i>
@@ -582,7 +584,7 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION: 5 SACRED BOTANICALS -->
+  <!-- SECTION: 5 SACRED BOTANICALS                                              -->
   <!-- ========================================================================= -->
   <section id="ingredients" class="py-24 bg-mauryan-900 border-t border-b border-mauryan-gold/20 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -591,7 +593,7 @@
         <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
           Arthashastra Book XIV Phyto-Actives
         </span>
-        <h2 class="text-3xl sm:text-5xl font-royal font-black text-gold-gradient">
+        <h2 class="text-3xl sm:text-5xl font-royal font-black gold-gradient-text">
           The 5 Sacred Botanicals
         </h2>
         <p class="text-base text-[#baa391]">
@@ -601,7 +603,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-center">
         
-        <div class="bg-mauryan-850 p-6 rounded-3xl border border-mauryan-gold/20 hover:border-mauryan-gold/60 transition-all space-y-3">
+        <div class="mauryan-card p-6 rounded-3xl space-y-3">
           <div class="w-14 h-14 mx-auto rounded-2xl bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
             गु
           </div>
@@ -612,7 +614,7 @@
           </p>
         </div>
 
-        <div class="bg-mauryan-850 p-6 rounded-3xl border border-mauryan-gold/20 hover:border-mauryan-gold/60 transition-all space-y-3">
+        <div class="mauryan-card p-6 rounded-3xl space-y-3">
           <div class="w-14 h-14 mx-auto rounded-2xl bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
             नि
           </div>
@@ -623,7 +625,7 @@
           </p>
         </div>
 
-        <div class="bg-mauryan-850 p-6 rounded-3xl border border-mauryan-gold/20 hover:border-mauryan-gold/60 transition-all space-y-3">
+        <div class="mauryan-card p-6 rounded-3xl space-y-3">
           <div class="w-14 h-14 mx-auto rounded-2xl bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
             व
           </div>
@@ -634,7 +636,7 @@
           </p>
         </div>
 
-        <div class="bg-mauryan-850 p-6 rounded-3xl border border-mauryan-gold/20 hover:border-mauryan-gold/60 transition-all space-y-3">
+        <div class="mauryan-card p-6 rounded-3xl space-y-3">
           <div class="w-14 h-14 mx-auto rounded-2xl bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
             अ
           </div>
@@ -645,7 +647,7 @@
           </p>
         </div>
 
-        <div class="bg-mauryan-850 p-6 rounded-3xl border border-mauryan-gold/20 hover:border-mauryan-gold/60 transition-all space-y-3">
+        <div class="mauryan-card p-6 rounded-3xl space-y-3">
           <div class="w-14 h-14 mx-auto rounded-2xl bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
             क
           </div>
@@ -662,7 +664,7 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION: "WHY EVERYONE WILL BUY THIS" (Mandatory Guideline) -->
+  <!-- SECTION: "WHY EVERYONE WILL BUY THIS" (Mandatory Guideline)               -->
   <!-- ========================================================================= -->
   <section id="why-buy" class="py-24 bg-mauryan-950 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -671,7 +673,7 @@
         <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
           Target Consumer Validation
         </span>
-        <h2 class="text-3xl sm:text-5xl font-royal font-black text-gold-gradient">
+        <h2 class="text-3xl sm:text-5xl font-royal font-black gold-gradient-text">
           Why Normal Everyday People Will Buy This
         </h2>
         <p class="text-base text-[#baa391]">
@@ -681,7 +683,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <div class="bg-mauryan-900 rounded-3xl p-8 border border-mauryan-gold/20 space-y-4 hover:border-mauryan-gold/60 transition-all flex flex-col justify-between">
+        <div class="mauryan-card rounded-3xl p-8 space-y-4 flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 rounded-2xl bg-mauryan-terracotta/20 border border-mauryan-terracotta flex items-center justify-center text-mauryan-terracotta">
@@ -705,7 +707,7 @@
           </div>
         </div>
 
-        <div class="bg-mauryan-900 rounded-3xl p-8 border border-mauryan-gold/20 space-y-4 hover:border-mauryan-gold/60 transition-all flex flex-col justify-between">
+        <div class="mauryan-card rounded-3xl p-8 space-y-4 flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 rounded-2xl bg-mauryan-gold/20 border border-mauryan-gold flex items-center justify-center text-mauryan-gold">
@@ -729,7 +731,7 @@
           </div>
         </div>
 
-        <div class="bg-mauryan-900 rounded-3xl p-8 border border-mauryan-gold/20 space-y-4 hover:border-mauryan-gold/60 transition-all flex flex-col justify-between">
+        <div class="mauryan-card rounded-3xl p-8 space-y-4 flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 rounded-2xl bg-mauryan-emerald/20 border border-mauryan-emerald flex items-center justify-center text-mauryan-emerald">
@@ -759,7 +761,7 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION: PRICING & STORE (Meets Guideline: Proper Cart System) -->
+  <!-- SECTION: PRICING & STORE (Meets Guideline: Proper Cart System)            -->
   <!-- ========================================================================= -->
   <section id="pricing" class="py-24 bg-mauryan-900 border-t border-mauryan-gold/20 relative parchment-pattern">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -768,7 +770,7 @@
         <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
           Transparent Store & Subscriptions
         </span>
-        <h2 class="text-3xl sm:text-5xl font-royal font-black text-gold-gradient">
+        <h2 class="text-3xl sm:text-5xl font-royal font-black gold-gradient-text">
           Claim Your Sovereign Air System
         </h2>
         <p class="text-base text-[#baa391]">
@@ -779,7 +781,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         
         <!-- Package 1 -->
-        <div class="bg-mauryan-850 rounded-3xl p-8 border border-mauryan-gold/30 hover:border-mauryan-gold transition-all flex flex-col justify-between space-y-6">
+        <div class="mauryan-card rounded-3xl p-8 flex flex-col justify-between space-y-6">
           <div class="space-y-4">
             <span class="text-xs font-royal uppercase tracking-wider text-[#a18c7c] block">Single Room / Studio</span>
             <h3 class="text-2xl font-royal font-bold text-white">Shanti Pod Solo</h3>
@@ -796,14 +798,14 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> 1-Year Replacement Warranty</li>
             </ul>
           </div>
-          <button onclick="addToCart('Shanti Pod Solo (1BHK Starter)', 2999, '1 Pod + 2 Refills')" class="w-full py-4 rounded-full bg-mauryan-900 border border-mauryan-gold/40 text-mauryan-goldLight font-royal font-bold text-xs uppercase tracking-wider hover:bg-mauryan-gold hover:text-mauryan-950 transition-all flex items-center justify-center gap-2">
+          <button onclick="addToCart('Shanti Pod Solo (1BHK Starter)', 2999, '1 Pod + 2 Refills')" class="w-full py-4 rounded-full bg-mauryan-950 border border-mauryan-gold/40 text-mauryan-goldLight font-royal font-bold text-xs uppercase tracking-wider hover:bg-mauryan-gold hover:text-mauryan-950 transition-all flex items-center justify-center gap-2">
             <i data-lucide="shopping-cart" class="w-4 h-4"></i>
             <span>Add to Cart &bull; ₹2,999</span>
           </button>
         </div>
 
         <!-- Package 2 (Most Popular) -->
-        <div class="bg-gradient-to-b from-[#29180c] to-mauryan-850 rounded-3xl p-8 border-2 border-mauryan-gold shadow-2xl shadow-mauryan-gold/15 flex flex-col justify-between space-y-6 relative transform lg:-translate-y-2">
+        <div class="bg-gradient-to-b from-[#29180c] to-mauryan-850 rounded-3xl p-8 border-2 border-mauryan-gold shadow-2xl shadow-mauryan-gold/20 flex flex-col justify-between space-y-6 relative transform lg:-translate-y-2">
           <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-mauryan-gold to-mauryan-terracotta text-mauryan-950 font-royal font-black text-[10px] uppercase tracking-widest shadow-md">
             Most Popular Choice
           </div>
@@ -831,7 +833,7 @@
         </div>
 
         <!-- Package 3 -->
-        <div class="bg-mauryan-850 rounded-3xl p-8 border border-mauryan-gold/30 hover:border-mauryan-gold transition-all flex flex-col justify-between space-y-6">
+        <div class="mauryan-card rounded-3xl p-8 flex flex-col justify-between space-y-6">
           <div class="space-y-4">
             <span class="text-xs font-royal uppercase tracking-wider text-[#a18c7c] block">Recurring Pod Subscription</span>
             <h3 class="text-2xl font-royal font-bold text-white">45-Day Eco-Pod Refill</h3>
@@ -847,7 +849,7 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> Zero Plastic Waste & Carbon Neutral</li>
             </ul>
           </div>
-          <button onclick="addToCart('45-Day Eco-Pod Refill Pod', 499, '1 Biodegradable Pod')" class="w-full py-4 rounded-full bg-mauryan-900 border border-mauryan-gold/40 text-mauryan-goldLight font-royal font-bold text-xs uppercase tracking-wider hover:bg-mauryan-gold hover:text-mauryan-950 transition-all flex items-center justify-center gap-2">
+          <button onclick="addToCart('45-Day Eco-Pod Refill Pod', 499, '1 Biodegradable Pod')" class="w-full py-4 rounded-full bg-mauryan-950 border border-mauryan-gold/40 text-mauryan-goldLight font-royal font-bold text-xs uppercase tracking-wider hover:bg-mauryan-gold hover:text-mauryan-950 transition-all flex items-center justify-center gap-2">
             <i data-lucide="repeat" class="w-4 h-4"></i>
             <span>Subscribe &bull; ₹499</span>
           </button>
@@ -859,7 +861,7 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION: CONTACT & DISPATCH (Mandatory Guideline) -->
+  <!-- SECTION: CONTACT & DISPATCH (Mandatory Guideline)                         -->
   <!-- ========================================================================= -->
   <section id="contact" class="py-24 bg-mauryan-950 border-t border-mauryan-gold/20 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -870,7 +872,7 @@
           <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
             Imperial Headquarters & Contact
           </span>
-          <h2 class="text-3xl sm:text-4xl font-royal font-black text-gold-gradient">
+          <h2 class="text-3xl sm:text-4xl font-royal font-black gold-gradient-text">
             Connect with Sasyā-Air Council
           </h2>
           <p class="text-sm text-[#baa391] leading-relaxed">
@@ -910,7 +912,7 @@
           </div>
         </div>
 
-        <div class="lg:col-span-7 bg-mauryan-900 p-8 sm:p-10 rounded-3xl border border-mauryan-gold/30 shadow-xl">
+        <div class="lg:col-span-7 mauryan-card p-8 sm:p-10 rounded-3xl">
           <h3 class="text-xl font-royal font-bold text-white mb-6">Send an Imperial Dispatch</h3>
           <form onsubmit="handleContactSubmit(event)" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -961,9 +963,9 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- FOOTER -->
+  <!-- FOOTER                                                                    -->
   <!-- ========================================================================= -->
-  <footer class="bg-[#050302] border-t border-mauryan-gold/30 py-12 text-[#998270] text-xs">
+  <footer class="bg-[#040201] border-t border-mauryan-gold/30 py-12 text-[#998270] text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       
       <div class="flex items-center gap-3">
@@ -994,7 +996,7 @@
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- INTERACTIVE CART DRAWER -->
+  <!-- INTERACTIVE CART DRAWER                                                   -->
   <!-- ========================================================================= -->
   <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden transition-opacity" onclick="toggleCartDrawer()"></div>
   <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-mauryan-950 border-l border-mauryan-gold/30 z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between shadow-2xl">
@@ -1046,13 +1048,93 @@
   </aside>
 
   <!-- ========================================================================= -->
-  <!-- JAVASCRIPT: THREE.JS 3D ARENA + 3D POD + GSAP ANIMATIONS + CART           -->
+  <!-- JAVASCRIPT: WEB AUDIO ROYAL DRONE + THREE.JS 3D ARENA & POD ENGINE        -->
   <!-- ========================================================================= -->
   <script>
     lucide.createIcons();
 
     /* ========================================================================= */
-    /* DATA: 7 PILLARS (SAPTĀNGA) KNOWLEDGE GRAPH                                */
+    /* 1. ATMOSPHERIC MAURYAN AUDIO SYNTHESIZER (WEB AUDIO API)                  */
+    /* Creates an authentic Indian Tanpura drone + temple gong bell without lag  */
+    /* ========================================================================= */
+    let audioCtx = null;
+    let isPlayingAudio = false;
+    let droneOsc1, droneOsc2, droneGain;
+
+    function initAudioEngine() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function toggleMauryanAudio() {
+      initAudioEngine();
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const text = document.getElementById('sound-text');
+      const icon = document.getElementById('sound-icon');
+
+      if (!isPlayingAudio) {
+        // Start Tanpura/Yajna Ambient Harmonic Drone
+        droneGain = audioCtx.createGain();
+        droneGain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+        droneGain.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 2);
+
+        // Fundamental Root Drone (D - 146.83 Hz)
+        droneOsc1 = audioCtx.createOscillator();
+        droneOsc1.type = 'triangle';
+        droneOsc1.frequency.setValueAtTime(146.83, audioCtx.currentTime);
+
+        // Fifth Harmony (A - 220 Hz)
+        droneOsc2 = audioCtx.createOscillator();
+        droneOsc2.type = 'sine';
+        droneOsc2.frequency.setValueAtTime(220.0, audioCtx.currentTime);
+
+        droneOsc1.connect(droneGain);
+        droneOsc2.connect(droneGain);
+        droneGain.connect(audioCtx.destination);
+
+        droneOsc1.start();
+        droneOsc2.start();
+
+        playTempleBell();
+        isPlayingAudio = true;
+        text.textContent = 'Mute Royal Drone';
+        icon.className = 'w-4 h-4 text-mauryan-gold animate-spin';
+      } else {
+        // Stop Audio smoothly
+        if (droneGain) {
+          droneGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1);
+          setTimeout(() => {
+            if (droneOsc1) droneOsc1.stop();
+            if (droneOsc2) droneOsc2.stop();
+          }, 1000);
+        }
+        isPlayingAudio = false;
+        text.textContent = 'Play Royal Soundscape';
+        icon.className = 'w-4 h-4 text-mauryan-gold';
+      }
+    }
+
+    // Play a gentle ancient temple bell chime on actions
+    function playTempleBell() {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5 chime
+      gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 2.5);
+    }
+
+    /* ========================================================================= */
+    /* 2. THE 7 PILLARS (SAPTĀNGA) ARENA (PATALIPUTRA STONE COLOSSEUM)          */
     /* ========================================================================= */
     const pillarsData = [
       {
@@ -1063,7 +1145,7 @@
         modernTitle: "Shanti Mode & Neuro-Restoration",
         modern: "Releases micro-atomized Vacha & Jatamansi root extract at night to lower cortisol, dissolve screen burnout, and induce deep REM sleep in 15 mins for the head of the house.",
         benefit: "Guarantees restful sleep, eliminates insomnia, and replaces addictive sleeping aids with pure ancient aerobiology.",
-        colorHex: 0xe5a93b,
+        colorHex: 0xe6a838,
         symbol: "स्वा"
       },
       {
@@ -1107,7 +1189,7 @@
         modernTitle: "₹12,000+ Annual Household Savings",
         modern: "Consolidates an air purifier, mosquito repeller, and aromatherapy diffuser into one ₹2,999 unit with recyclable ₹499 pods, saving households from ₹15,000 purifiers & doctor bills.",
         benefit: "Protects family wealth by delivering 3-in-1 value with ultra-low power consumption and zero costly filter changes.",
-        colorHex: 0xe5a93b,
+        colorHex: 0xe6a838,
         symbol: "को"
       },
       {
@@ -1137,11 +1219,8 @@
     let currentPillarIndex = 0;
     let saptangaScene, saptangaCamera, saptangaRenderer, saptangaControls;
     let pillarMeshes = [];
-    let centralFlameLight;
+    let fireParticles;
 
-    /* ========================================================================= */
-    /* 1. THREE.JS 3D SAPTĀNGA COLOSSEUM ARENA                                   */
-    /* ========================================================================= */
     function initSaptanga3DArena() {
       const container = document.getElementById('saptanga-3d-canvas');
       if (!container) return;
@@ -1153,7 +1232,7 @@
 
       // Camera
       saptangaCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-      saptangaCamera.position.set(0, 8.5, 14);
+      saptangaCamera.position.set(0, 9.5, 15);
 
       // Renderer
       saptangaRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -1162,71 +1241,75 @@
       saptangaRenderer.shadowMap.enabled = true;
       container.appendChild(saptangaRenderer.domElement);
 
-      // Orbit Controls (Move around the arena)
+      // Orbit Controls
       saptangaControls = new THREE.OrbitControls(saptangaCamera, saptangaRenderer.domElement);
       saptangaControls.enableDamping = true;
       saptangaControls.dampingFactor = 0.05;
-      saptangaControls.maxPolarAngle = Math.PI / 2.05; // Don't go below floor
+      saptangaControls.autoRotate = true;
+      saptangaControls.autoRotateSpeed = 0.6;
+      saptangaControls.maxPolarAngle = Math.PI / 2.05;
       saptangaControls.minDistance = 6;
       saptangaControls.maxDistance = 22;
-      saptangaControls.target.set(0, 1.5, 0);
+      saptangaControls.target.set(0, 1.8, 0);
 
       // Ambient Lighting
-      const ambientLight = new THREE.AmbientLight(0xffecd1, 0.8);
+      const ambientLight = new THREE.AmbientLight(0xffebd1, 0.9);
       saptangaScene.add(ambientLight);
 
-      // Central Sacred Fire Light (Yajna Kund in Center)
-      centralFlameLight = new THREE.PointLight(0xe5a93b, 4.5, 25);
-      centralFlameLight.position.set(0, 1.5, 0);
-      saptangaScene.add(centralFlameLight);
+      // Central Sovereign Flame Light
+      const centralLight = new THREE.PointLight(0xe6a838, 5.0, 28);
+      centralLight.position.set(0, 2.0, 0);
+      saptangaScene.add(centralLight);
 
-      // Directional Sun/Moon Light
-      const dirLight = new THREE.DirectionalLight(0xffd67a, 1.5);
-      dirLight.position.set(8, 15, 8);
-      saptangaScene.add(dirLight);
+      // Sun/Moon directional light
+      const sun = new THREE.DirectionalLight(0xffd67a, 1.6);
+      sun.position.set(10, 18, 8);
+      saptangaScene.add(sun);
 
-      // Stone Arena Floor (Carved Mauryan Dais)
-      const floorGeo = new THREE.CylinderGeometry(8.5, 9.0, 0.5, 64);
-      const floorMat = new THREE.MeshStandardMaterial({
-        color: 0x140d07,
-        roughness: 0.75,
-        metalness: 0.2
-      });
-      const floorMesh = new THREE.Mesh(floorGeo, floorMat);
-      floorMesh.position.y = -0.25;
-      floorMesh.receiveShadow = true;
-      saptangaScene.add(floorMesh);
+      // Stone Arena Floor (Carved Sandstone Tiered Dais)
+      const floorGeo1 = new THREE.CylinderGeometry(8.5, 9.2, 0.5, 64);
+      const floorMat = new THREE.MeshStandardMaterial({ color: 0x180f08, roughness: 0.8, metalness: 0.2 });
+      const floorMesh1 = new THREE.Mesh(floorGeo1, floorMat);
+      floorMesh1.position.y = -0.25;
+      saptangaScene.add(floorMesh1);
 
-      // Inner Golden Filigree Circle on Floor
-      const innerRingGeo = new THREE.RingGeometry(3.5, 3.65, 64);
-      const innerRingMat = new THREE.MeshBasicMaterial({ color: 0xe5a93b, side: THREE.DoubleSide });
-      const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
-      innerRing.rotation.x = Math.PI / 2;
-      innerRing.position.y = 0.01;
-      saptangaScene.add(innerRing);
+      // Inner Altar Ring
+      const ringGeo = new THREE.RingGeometry(3.6, 3.8, 64);
+      const ringMat = new THREE.MeshBasicMaterial({ color: 0xe6a838, side: THREE.DoubleSide });
+      const ring = new THREE.Mesh(ringGeo, ringMat);
+      ring.rotation.x = Math.PI / 2;
+      ring.position.y = 0.02;
+      saptangaScene.add(ring);
 
-      // Central Yajna Altar (The Sovereign Fire)
-      const altarGeo = new THREE.CylinderGeometry(1.2, 1.5, 0.8, 8);
-      const altarMat = new THREE.MeshStandardMaterial({ color: 0x2b1509, roughness: 0.5 });
+      // Central Yajna Altar (The Sovereign Fire Pit)
+      const altarGeo = new THREE.CylinderGeometry(1.2, 1.6, 0.8, 8);
+      const altarMat = new THREE.MeshStandardMaterial({ color: 0x33190b, roughness: 0.6 });
       const altar = new THREE.Mesh(altarGeo, altarMat);
       altar.position.y = 0.4;
       saptangaScene.add(altar);
 
-      // Sacred Floating Core
-      const coreGeo = new THREE.OctahedronGeometry(0.5, 0);
-      const coreMat = new THREE.MeshStandardMaterial({
-        color: 0xffd67a,
-        emissive: 0xe5a93b,
-        emissiveIntensity: 0.8,
-        metalness: 0.9,
-        roughness: 0.1
+      // Central Sacred Flame Particle Effect
+      const fireCount = 70;
+      const fireGeo = new THREE.BufferGeometry();
+      const firePos = new Float32Array(fireCount * 3);
+      for (let i = 0; i < fireCount; i++) {
+        firePos[i * 3] = (Math.random() - 0.5) * 0.4;
+        firePos[i * 3 + 1] = 0.8 + Math.random() * 1.4;
+        firePos[i * 3 + 2] = (Math.random() - 0.5) * 0.4;
+      }
+      fireGeo.setAttribute('position', new THREE.BufferAttribute(firePos, 3));
+      const fireMat = new THREE.PointsMaterial({
+        color: 0xffa726,
+        size: 0.16,
+        transparent: true,
+        opacity: 0.8,
+        blending: THREE.AdditiveBlending
       });
-      const centralCore = new THREE.Mesh(coreGeo, coreMat);
-      centralCore.position.y = 1.4;
-      saptangaScene.add(centralCore);
+      fireParticles = new THREE.Points(fireGeo, fireMat);
+      saptangaScene.add(fireParticles);
 
-      // BUILD THE 7 PILLARS IN A HEPTAGONAL RING
-      const radius = 5.6;
+      // BUILD 7 ASHOKA-STYLE MONOLITHIC PILLARS
+      const radius = 5.8;
       const pillarCount = 7;
 
       for (let i = 0; i < pillarCount; i++) {
@@ -1234,62 +1317,54 @@
         const x = Math.cos(angle) * radius;
         const z = Math.sin(angle) * radius;
 
-        const pillarGroup = new THREE.Group();
-        pillarGroup.position.set(x, 0, z);
+        const pillar = new THREE.Group();
+        pillar.position.set(x, 0, z);
 
-        // Pillar Base
-        const pBaseGeo = new THREE.CylinderGeometry(0.55, 0.7, 0.4, 16);
-        const pBaseMat = new THREE.MeshStandardMaterial({ color: 0x22130a, roughness: 0.6 });
-        const pBase = new THREE.Mesh(pBaseGeo, pBaseMat);
-        pBase.position.y = 0.2;
-        pillarGroup.add(pBase);
+        // Tiered Base
+        const bGeo = new THREE.CylinderGeometry(0.65, 0.85, 0.45, 20);
+        const bMat = new THREE.MeshStandardMaterial({ color: 0x24150b, roughness: 0.7 });
+        const base = new THREE.Mesh(bGeo, bMat);
+        base.position.y = 0.22;
+        pillar.add(base);
 
-        // Pillar Shaft (Carved Stone Ashoka-style column)
-        const pShaftGeo = new THREE.CylinderGeometry(0.42, 0.48, 3.2, 24);
-        const pShaftMat = new THREE.MeshStandardMaterial({
-          color: 0x3d2314,
-          roughness: 0.4,
-          metalness: 0.2
-        });
-        const pShaft = new THREE.Mesh(pShaftGeo, pShaftMat);
-        pShaft.position.y = 1.8;
-        pillarGroup.add(pShaft);
+        // Fluted Column Shaft
+        const sGeo = new THREE.CylinderGeometry(0.44, 0.52, 3.6, 24);
+        const sMat = new THREE.MeshStandardMaterial({ color: 0x472815, roughness: 0.5, metalness: 0.25 });
+        const shaft = new THREE.Mesh(sGeo, sMat);
+        shaft.position.y = 2.0;
+        pillar.add(shaft);
 
-        // Pillar Capital (Crown with Lotus motif)
-        const pCapitalGeo = new THREE.CylinderGeometry(0.65, 0.45, 0.5, 16);
-        const pCapitalMat = new THREE.MeshStandardMaterial({
-          color: 0x5a351a,
-          roughness: 0.3,
-          metalness: 0.4
-        });
-        const pCapital = new THREE.Mesh(pCapitalGeo, pCapitalMat);
-        pCapital.position.y = 3.5;
-        pillarGroup.add(pCapital);
+        // Bell / Lotus Capital
+        const cGeo = new THREE.CylinderGeometry(0.72, 0.48, 0.6, 20);
+        const cMat = new THREE.MeshStandardMaterial({ color: 0x6e3d1d, roughness: 0.4, metalness: 0.35 });
+        const capital = new THREE.Mesh(cGeo, cMat);
+        capital.position.y = 3.9;
+        pillar.add(capital);
 
-        // Floating Glowing Gem on Top of Pillar
-        const gemGeo = new THREE.IcosahedronGeometry(0.28, 0);
-        const gemMat = new THREE.MeshStandardMaterial({
+        // Floating Illuminated Dharma Jewel
+        const jGeo = new THREE.OctahedronGeometry(0.34, 0);
+        const jMat = new THREE.MeshStandardMaterial({
           color: pillarsData[i].colorHex,
           emissive: pillarsData[i].colorHex,
-          emissiveIntensity: 0.6,
-          metalness: 0.8,
-          roughness: 0.2
+          emissiveIntensity: 0.8,
+          metalness: 0.9,
+          roughness: 0.1
         });
-        const gemMesh = new THREE.Mesh(gemGeo, gemMat);
-        gemMesh.position.y = 4.1;
-        pillarGroup.add(gemMesh);
+        const jewel = new THREE.Mesh(jGeo, jMat);
+        jewel.position.y = 4.6;
+        pillar.add(jewel);
 
-        // Pillar Beacon Light
-        const beacon = new THREE.PointLight(pillarsData[i].colorHex, 1.5, 4);
-        beacon.position.y = 4.1;
-        pillarGroup.add(beacon);
+        // Beacon Light
+        const beacon = new THREE.PointLight(pillarsData[i].colorHex, 2.0, 5);
+        beacon.position.y = 4.6;
+        pillar.add(beacon);
 
-        pillarGroup.userData = { index: i, gem: gemMesh, beacon: beacon };
-        saptangaScene.add(pillarGroup);
-        pillarMeshes.push(pillarGroup);
+        pillar.userData = { index: i, jewel: jewel };
+        saptangaScene.add(pillar);
+        pillarMeshes.push(pillar);
       }
 
-      // RAYCASTER FOR CLICKING PILLARS IN 3D
+      // RAYCASTER FOR 3D PILLAR CLICKING
       const raycaster = new THREE.Raycaster();
       const mouse = new THREE.Vector2();
 
@@ -1302,17 +1377,16 @@
         const intersects = raycaster.intersectObjects(saptangaScene.children, true);
 
         if (intersects.length > 0) {
-          let topParent = intersects[0].object;
-          while (topParent.parent && topParent.parent !== saptangaScene) {
-            topParent = topParent.parent;
+          let top = intersects[0].object;
+          while (top.parent && top.parent !== saptangaScene) {
+            top = top.parent;
           }
-          if (topParent.userData && topParent.userData.index !== undefined) {
-            selectPillarByIndex(topParent.userData.index);
+          if (top.userData && top.userData.index !== undefined) {
+            selectPillarByIndex(top.userData.index);
           }
         }
       });
 
-      // Window Resize
       window.addEventListener('resize', () => {
         const newW = container.clientWidth;
         const newH = container.clientHeight;
@@ -1321,19 +1395,24 @@
         saptangaRenderer.setSize(newW, newH);
       });
 
-      // Animation Loop
       function animateArena() {
         requestAnimationFrame(animateArena);
 
-        // Subtle pulsing of sacred core
-        centralCore.rotation.y += 0.015;
-        centralCore.rotation.x += 0.008;
+        // Fire particle flicker
+        const pArr = fireParticles.geometry.attributes.position.array;
+        for (let i = 0; i < fireCount; i++) {
+          pArr[i * 3 + 1] += 0.015;
+          if (pArr[i * 3 + 1] > 2.2) {
+            pArr[i * 3 + 1] = 0.8;
+          }
+        }
+        fireParticles.geometry.attributes.position.needsUpdate = true;
 
-        // Animate floating gems on pillars
+        // Animate floating jewels
         pillarMeshes.forEach((p, idx) => {
-          if (p.userData && p.userData.gem) {
-            p.userData.gem.rotation.y += 0.02;
-            p.userData.gem.position.y = 4.1 + Math.sin(Date.now() * 0.003 + idx) * 0.08;
+          if (p.userData && p.userData.jewel) {
+            p.userData.jewel.rotation.y += 0.02;
+            p.userData.jewel.position.y = 4.6 + Math.sin(Date.now() * 0.003 + idx) * 0.08;
           }
         });
 
@@ -1343,12 +1422,17 @@
       animateArena();
     }
 
-    // Select Pillar and smooth camera zoom towards it
     function selectPillarByIndex(index) {
       currentPillarIndex = index;
       const data = pillarsData[index];
 
-      // Update Side Card
+      // Play bell chime if audio started
+      if (isPlayingAudio) playTempleBell();
+
+      // Stop auto-rotation temporarily on interaction
+      saptangaControls.autoRotate = false;
+
+      // Update Card Text
       document.getElementById('card-pillar-number').textContent = `Pillar ${index + 1} • Saptānga Theory`;
       document.getElementById('card-pillar-title').textContent = data.name;
       document.getElementById('card-pillar-icon').textContent = data.symbol;
@@ -1358,7 +1442,7 @@
       document.getElementById('card-pillar-benefit').textContent = data.benefit;
       document.getElementById('active-pillar-name').textContent = data.english;
 
-      // Update Tab Pill styles
+      // Update Tabs
       for (let i = 0; i < 7; i++) {
         const tab = document.getElementById(`pill-tab-${i}`);
         if (i === index) {
@@ -1368,38 +1452,24 @@
         }
       }
 
-      // Smooth Camera Tween to focus on the selected pillar
+      // Smooth camera position towards pillar
       if (pillarMeshes[index] && saptangaControls) {
         const targetPos = pillarMeshes[index].position;
-        gsap.to(saptangaControls.target, {
-          x: targetPos.x * 0.5,
-          y: 2.2,
-          z: targetPos.z * 0.5,
-          duration: 1.2,
-          ease: "power2.out"
-        });
-        gsap.to(saptangaCamera.position, {
-          x: targetPos.x * 1.8,
-          y: 5.5,
-          z: targetPos.z * 1.8,
-          duration: 1.5,
-          ease: "power2.out"
-        });
+        saptangaControls.target.set(targetPos.x * 0.4, 2.2, targetPos.z * 0.4);
+        saptangaCamera.position.set(targetPos.x * 1.8, 5.5, targetPos.z * 1.8);
       }
     }
 
     function nextPillar() {
-      const next = (currentPillarIndex + 1) % 7;
-      selectPillarByIndex(next);
+      selectPillarByIndex((currentPillarIndex + 1) % 7);
     }
 
     function prevPillar() {
-      const prev = (currentPillarIndex - 1 + 7) % 7;
-      selectPillarByIndex(prev);
+      selectPillarByIndex((currentPillarIndex - 1 + 7) % 7);
     }
 
     /* ========================================================================= */
-    /* 2. THREE.JS 3D CHALICE POD WORKSTATION                                    */
+    /* 3. 3D CHALICE POD VIEWER                                                  */
     /* ========================================================================= */
     let podScene, podCamera, podRenderer, podControls, podGroup, podMist, podInnerLight, podHalo;
 
@@ -1437,29 +1507,25 @@
 
       podGroup = new THREE.Group();
 
-      // Pedestal
       const baseGeo = new THREE.CylinderGeometry(1.4, 1.6, 0.35, 32);
       const baseMat = new THREE.MeshStandardMaterial({ color: 0x1a0f07, roughness: 0.6, metalness: 0.8 });
       const baseMesh = new THREE.Mesh(baseGeo, baseMat);
       baseMesh.position.y = -1.2;
       podGroup.add(baseMesh);
 
-      // Terracotta Body
       const bodyGeo = new THREE.CylinderGeometry(1.1, 1.4, 1.4, 32);
       const bodyMat = new THREE.MeshStandardMaterial({ color: 0xa84824, roughness: 0.45, metalness: 0.35 });
       const bodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
       bodyMesh.position.y = -0.4;
       podGroup.add(bodyMesh);
 
-      // Gold Filigree Ring
       const ringGeo = new THREE.TorusGeometry(1.22, 0.08, 16, 64);
-      const ringMat = new THREE.MeshStandardMaterial({ color: 0xe5a93b, metalness: 0.95, roughness: 0.2 });
+      const ringMat = new THREE.MeshStandardMaterial({ color: 0xe6a838, metalness: 0.95, roughness: 0.2 });
       const ringMesh = new THREE.Mesh(ringGeo, ringMat);
       ringMesh.rotation.x = Math.PI / 2;
       ringMesh.position.y = 0.2;
       podGroup.add(ringMesh);
 
-      // Frosted Ultrasonic Dome
       const domeGeo = new THREE.SphereGeometry(1.15, 32, 24, 0, Math.PI * 2, 0, Math.PI * 0.45);
       const domeMat = new THREE.MeshPhysicalMaterial({
         color: 0xffe6c2,
@@ -1472,14 +1538,12 @@
       domeMesh.position.y = 0.25;
       podGroup.add(domeMesh);
 
-      // Crown Spout
       const spoutGeo = new THREE.CylinderGeometry(0.3, 0.45, 0.4, 32);
       const spoutMat = new THREE.MeshStandardMaterial({ color: 0xd49b35, metalness: 0.9, roughness: 0.3 });
       const spoutMesh = new THREE.Mesh(spoutGeo, spoutMat);
       spoutMesh.position.y = 0.95;
       podGroup.add(spoutMesh);
 
-      // Halo Ring
       const haloGeo = new THREE.RingGeometry(1.4, 1.55, 64);
       const haloMat = new THREE.MeshBasicMaterial({ color: 0xc85a2b, side: THREE.DoubleSide, transparent: true, opacity: 0.4 });
       podHalo = new THREE.Mesh(haloGeo, haloMat);
@@ -1487,8 +1551,7 @@
       podHalo.position.y = -1.18;
       podGroup.add(podHalo);
 
-      // Mist Particles
-      const particleCount = 180;
+      const particleCount = 160;
       const particlesGeo = new THREE.BufferGeometry();
       const positions = new Float32Array(particleCount * 3);
       const velocities = [];
@@ -1548,6 +1611,7 @@
     }
 
     function setChaliceMode(mode) {
+      if (isPlayingAudio) playTempleBell();
       const heroPill = document.getElementById('hero-mode-pill');
       const podAqi = document.getElementById('pod-aqi-stat');
 
@@ -1555,25 +1619,25 @@
       const btnShanti = document.getElementById('btn-chalice-shanti');
       const btnPrana = document.getElementById('btn-chalice-prana');
 
-      if (btnRaksha) btnRaksha.className = btnRaksha.className.replace('gold-border-active', 'gold-border');
-      if (btnShanti) btnShanti.className = btnShanti.className.replace('gold-border-active', 'gold-border');
-      if (btnPrana) btnPrana.className = btnPrana.className.replace('gold-border-active', 'gold-border');
+      if (btnRaksha) btnRaksha.className = btnRaksha.className.replace('mauryan-card-active', 'border border-mauryan-gold/30');
+      if (btnShanti) btnShanti.className = btnShanti.className.replace('mauryan-card-active', 'border border-mauryan-gold/30');
+      if (btnPrana) btnPrana.className = btnPrana.className.replace('mauryan-card-active', 'border border-mauryan-gold/30');
 
       if (mode === 'raksha') {
         if (heroPill) heroPill.textContent = 'Raksha Mode Active';
-        if (btnRaksha) btnRaksha.className = btnRaksha.className.replace('gold-border', 'gold-border-active');
+        if (btnRaksha) btnRaksha.className = btnRaksha.className.replace('border border-mauryan-gold/30', 'mauryan-card-active');
         if (podInnerLight) podInnerLight.color.setHex(0xc85a2b);
         if (podHalo) podHalo.material.color.setHex(0xc85a2b);
         if (podAqi) podAqi.textContent = '18 (Pure Shielded)';
       } else if (mode === 'shanti') {
         if (heroPill) heroPill.textContent = 'Shanti Mode Active';
-        if (btnShanti) btnShanti.className = btnShanti.className.replace('gold-border', 'gold-border-active');
-        if (podInnerLight) podInnerLight.color.setHex(0xe5a93b);
-        if (podHalo) podHalo.material.color.setHex(0xe5a93b);
+        if (btnShanti) btnShanti.className = btnShanti.className.replace('border border-mauryan-gold/30', 'mauryan-card-active');
+        if (podInnerLight) podInnerLight.color.setHex(0xe6a838);
+        if (podHalo) podHalo.material.color.setHex(0xe6a838);
         if (podAqi) podAqi.textContent = '12 (Restorative Sanctuary)';
       } else if (mode === 'prana') {
         if (heroPill) heroPill.textContent = 'Prana Mode Active';
-        if (btnPrana) btnPrana.className = btnPrana.className.replace('gold-border', 'gold-border-active');
+        if (btnPrana) btnPrana.className = btnPrana.className.replace('border border-mauryan-gold/30', 'mauryan-card-active');
         if (podInnerLight) podInnerLight.color.setHex(0x0d9488);
         if (podHalo) podHalo.material.color.setHex(0x0d9488);
         if (podAqi) podAqi.textContent = '08 (Pristine Forest)';
@@ -1585,46 +1649,6 @@
         podGroup.rotation.set(0, 0, 0);
         podControls.reset();
       }
-    }
-
-    /* ========================================================================= */
-    /* 3. GSAP SCROLL & UI ANIMATIONS                                            */
-    /* ========================================================================= */
-    function initGSAPAnimations() {
-      if (typeof gsap === 'undefined') return;
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Hero Elements Staggered Fade Up
-      gsap.from("#hero h1", { opacity: 0, y: 40, duration: 1.2, ease: "power3.out" });
-      gsap.from("#hero p", { opacity: 0, y: 30, duration: 1.2, delay: 0.2, ease: "power3.out" });
-      gsap.from("#hero .grid", { opacity: 0, y: 20, duration: 1.0, delay: 0.4, ease: "power3.out" });
-
-      // Decline Story Cards Reveal on Scroll
-      gsap.from("#about-decline .grid > div", {
-        scrollTrigger: {
-          trigger: "#about-decline",
-          start: "top 75%"
-        },
-        opacity: 0,
-        y: 40,
-        stagger: 0.2,
-        duration: 1.0,
-        ease: "power2.out"
-      });
-
-      // Ingredients Botanicals Reveal
-      gsap.from("#ingredients .grid > div", {
-        scrollTrigger: {
-          trigger: "#ingredients",
-          start: "top 80%"
-        },
-        opacity: 0,
-        scale: 0.9,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "back.out(1.4)"
-      });
     }
 
     /* ========================================================================= */
@@ -1645,6 +1669,7 @@
     }
 
     function addToCart(title, price, variant) {
+      if (isPlayingAudio) playTempleBell();
       const existing = cart.find(item => item.title === title);
       if (existing) {
         existing.qty += 1;
@@ -1727,13 +1752,11 @@
       }, 5000);
     }
 
-    // Initialize 3D Viewers and GSAP on page load
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         initSaptanga3DArena();
         initChalicePodViewer('hero-3d-canvas');
         initChalicePodViewer('large-pod-canvas');
-        initGSAPAnimations();
       }, 150);
     });
   </script>
