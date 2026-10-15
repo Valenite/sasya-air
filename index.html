@@ -749,13 +749,17 @@
     lucide.createIcons();
 
     /* ========================================================================= */
-    /* 1. PROFESSIONAL WEB AUDIO SOUND FX (IDENTICAL TO IKIGAIDELHI.XYZ)         */
-    /* Includes tactile click, shogi clack, guardian hum, brush stroke & gong    */
+    /* 1. ANCIENT MAURYAN MEDITATIVE GENERATIVE AUDIO ENGINE                    */
+    /* Continuous Tanpura drone (Sa-Pa-Sa) + Procedural Bansuri Flute Raga Melodies */
     /* ========================================================================= */
-    class IkigaiSoundEngine {
+    class MauryanRagaSynthesizer {
       constructor() {
         this.ctx = null;
         this.enabled = false;
+        this.droneGain = null;
+        this.melodyInterval = null;
+        // Ancient Raga Bhairav / Yaman scale frequencies (Sa, Re, Ga, Ma, Pa, Dha, Ni, Sa')
+        this.ragaScale = [146.83, 164.81, 185.00, 207.65, 220.00, 246.94, 277.18, 293.66, 329.63, 369.99];
       }
 
       getContext() {
@@ -777,85 +781,206 @@
         const soundBars = document.getElementById('sound-bars');
         
         if (this.enabled) {
-          const e = this.getContext();
+          const ctx = this.getContext();
+          this.startContinuousRagaSoundscape();
           this.playUnlockGong();
-          statusLabel.textContent = 'AUDIO [ACTIVE]';
+          statusLabel.textContent = 'RAGA AMBIENCE [PLAYING]';
           soundBars.parentElement.classList.add('sound-active');
         } else {
+          this.stopContinuousRagaSoundscape();
           statusLabel.textContent = 'AUDIO [MUTED]';
           soundBars.parentElement.classList.remove('sound-active');
         }
       }
 
-      // Exact ikigaidelhi.xyz playHoverTick / playTactileClick
+      // Continuous Tanpura Drone + periodic meditative Bansuri notes
+      startContinuousRagaSoundscape() {
+        const ctx = this.getContext();
+        if (!ctx) return;
+
+        // Master Drone Gain
+        this.droneGain = ctx.createGain();
+        this.droneGain.gain.setValueAtTime(0.001, ctx.currentTime);
+        this.droneGain.gain.linearRampToValueAtTime(0.09, ctx.currentTime + 3);
+
+        // Tanpura String 1: Pancham (Pa - 220 Hz)
+        const oscPa = ctx.createOscillator();
+        oscPa.type = 'sine';
+        oscPa.frequency.setValueAtTime(220, ctx.currentTime);
+
+        // Tanpura String 2 & 3: Shadja (Sa - 146.83 Hz) with subtle acoustic beating
+        const oscSa1 = ctx.createOscillator();
+        oscSa1.type = 'triangle';
+        oscSa1.frequency.setValueAtTime(146.83, ctx.currentTime);
+
+        const oscSa2 = ctx.createOscillator();
+        oscSa2.type = 'sine';
+        oscSa2.frequency.setValueAtTime(147.10, ctx.currentTime);
+
+        // Warm Low-pass Filter for silky acoustic warmth
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(650, ctx.currentTime);
+
+        oscPa.connect(filter);
+        oscSa1.connect(filter);
+        oscSa2.connect(filter);
+        filter.connect(this.droneGain);
+        this.droneGain.connect(ctx.destination);
+
+        oscPa.start();
+        oscSa1.start();
+        oscSa2.start();
+
+        this.droneOscs = [oscPa, oscSa1, oscSa2];
+
+        // Periodic Procedural Bansuri Flute Melodies (plays smooth legato meditative notes)
+        this.melodyInterval = setInterval(() => {
+          if (this.enabled) {
+            this.playBansuriFlutePhrase();
+          }
+        }, 4500);
+      }
+
+      stopContinuousRagaSoundscape() {
+        if (this.droneGain && this.ctx) {
+          this.droneGain.gain.linearRampToValueAtTime(0.0001, this.ctx.currentTime + 1.5);
+          setTimeout(() => {
+            if (this.droneOscs) {
+              this.droneOscs.forEach(o => { try { o.stop(); } catch(e){} });
+            }
+          }, 1500);
+        }
+        if (this.melodyInterval) {
+          clearInterval(this.melodyInterval);
+        }
+      }
+
+      // Procedural Bamboo Flute (Bansuri) note with breath vibrato & glide
+      playBansuriFlutePhrase() {
+        const ctx = this.getContext();
+        if (!ctx) return;
+        try {
+          const t = ctx.currentTime;
+          const noteIndex = Math.floor(Math.random() * this.ragaScale.length);
+          const freq = this.ragaScale[noteIndex];
+
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          const breathNoise = ctx.createGain();
+
+          // Smooth Sine + Triangle blend for warm woody flute tone
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, t);
+          // Indian Meend (subtle pitch glide)
+          osc.frequency.linearRampToValueAtTime(freq * (1 + (Math.random() * 0.03 - 0.015)), t + 1.8);
+
+          // Attack - Decay - Sustain - Release (Soft breath attack)
+          gain.gain.setValueAtTime(0.001, t);
+          gain.gain.linearRampToValueAtTime(0.07, t + 0.4);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 3.2);
+
+          // Subtle natural tremolo (flute breath pulsation)
+          const tremolo = ctx.createOscillator();
+          const tremoloGain = ctx.createGain();
+          tremolo.frequency.setValueAtTime(4.8, t); // 4.8 Hz vibrato
+          tremoloGain.gain.setValueAtTime(0.015, t);
+          tremolo.connect(tremoloGain);
+          tremoloGain.connect(gain.gain);
+          tremolo.start(t);
+          tremolo.stop(t + 3.3);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(t);
+          osc.stop(t + 3.4);
+        } catch(e) {}
+      }
+
+      // Tactile UI Sounds
       playHoverTick() {
         if (!this.enabled) return;
-        let e = this.getContext();
-        if (e) try {
-          let t = e.currentTime, n = e.createOscillator(), r = e.createGain();
-          n.type = 'sine';
-          n.frequency.setValueAtTime(880, t);
-          n.frequency.exponentialRampToValueAtTime(220, t + 0.018);
-          r.gain.setValueAtTime(0.025, t);
-          r.gain.exponentialRampToValueAtTime(0.001, t + 0.02);
-          n.connect(r);
-          r.connect(e.destination);
-          n.start(t);
-          n.stop(t + 0.022);
-        } catch {}
+        const ctx = this.getContext();
+        if (!ctx) return;
+        try {
+          const t = ctx.currentTime;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(880, t);
+          osc.frequency.exponentialRampToValueAtTime(220, t + 0.018);
+          gain.gain.setValueAtTime(0.02, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.02);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(t);
+          osc.stop(t + 0.022);
+        } catch (e) {}
       }
 
       playTactileClick() {
         this.playHoverTick();
       }
 
-      // Exact ikigaidelhi.xyz playShogiClack
-      playShogiClack(e = false) {
+      playShogiClack(alt = false) {
         if (!this.enabled) return;
-        let t = this.getContext();
-        if (t) try {
-          let n = t.currentTime, r = t.createOscillator(), i = t.createGain();
-          r.type = 'sine';
-          r.frequency.setValueAtTime(e ? 680 : 940, n);
-          r.frequency.exponentialRampToValueAtTime(140, n + 0.05);
-          i.gain.setValueAtTime(e ? 0.24 : 0.18, n);
-          i.gain.exponentialRampToValueAtTime(0.001, n + 0.06);
-          let a = t.createOscillator(), o = t.createGain();
-          a.type = 'triangle';
-          a.frequency.setValueAtTime(2600, n);
-          a.frequency.exponentialRampToValueAtTime(420, n + 0.02);
-          o.gain.setValueAtTime(0.14, n);
-          o.gain.exponentialRampToValueAtTime(0.001, n + 0.025);
-          r.connect(i);
-          i.connect(t.destination);
-          a.connect(o);
-          o.connect(t.destination);
-          r.start(n);
-          a.start(n);
-          r.stop(n + 0.07);
-          a.stop(n + 0.03);
-        } catch {}
+        const ctx = this.getContext();
+        if (!ctx) return;
+        try {
+          const t = ctx.currentTime;
+          const osc1 = ctx.createOscillator();
+          const gain1 = ctx.createGain();
+          osc1.type = 'sine';
+          osc1.frequency.setValueAtTime(alt ? 680 : 940, t);
+          osc1.frequency.exponentialRampToValueAtTime(140, t + 0.05);
+          gain1.gain.setValueAtTime(alt ? 0.20 : 0.15, t);
+          gain1.gain.exponentialRampToValueAtTime(0.001, t + 0.06);
+
+          const osc2 = ctx.createOscillator();
+          const gain2 = ctx.createGain();
+          osc2.type = 'triangle';
+          osc2.frequency.setValueAtTime(2400, t);
+          osc2.frequency.exponentialRampToValueAtTime(380, t + 0.02);
+          gain2.gain.setValueAtTime(0.10, t);
+          gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.025);
+
+          osc1.connect(gain1);
+          gain1.connect(ctx.destination);
+          osc2.connect(gain2);
+          gain2.connect(ctx.destination);
+
+          osc1.start(t);
+          osc2.start(t);
+          osc1.stop(t + 0.07);
+          osc2.stop(t + 0.03);
+        } catch (e) {}
       }
 
-      // Exact ikigaidelhi.xyz playUnlockGong (Multi-harmonic overtone chord)
       playUnlockGong() {
         if (!this.enabled) return;
-        let e = this.getContext();
-        if (e) try {
-          let t = e.currentTime, n = [108, 216, 324, 432, 648], r = [0.26, 0.18, 0.12, 0.08, 0.04];
-          n.forEach((n, i) => {
-            let a = e.createOscillator(), o = e.createGain();
-            a.type = 'sine';
-            a.frequency.setValueAtTime(n, t);
-            o.gain.setValueAtTime(r[i], t);
-            o.gain.exponentialRampToValueAtTime(1e-4, t + 3.2);
-            a.connect(o);
-            o.connect(e.destination);
-            a.start(t);
-            a.stop(t + 3.3);
+        const ctx = this.getContext();
+        if (!ctx) return;
+        try {
+          const t = ctx.currentTime;
+          const freqs = [108, 216, 324, 432, 648];
+          const gains = [0.22, 0.14, 0.09, 0.05, 0.02];
+          freqs.forEach((f, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(f, t);
+            gain.gain.setValueAtTime(gains[i], t);
+            gain.gain.exponentialRampToValueAtTime(0.0001, t + 3.2);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(t);
+            osc.stop(t + 3.3);
           });
-        } catch {}
+        } catch (e) {}
       }
+    }
+
+    const audio = new MauryanRagaSynthesizer();
 
       // Exact ikigaidelhi.xyz playGuardianHum (warm meditative drone pulse)
       playGuardianHum() {
