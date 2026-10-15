@@ -749,121 +749,187 @@
     lucide.createIcons();
 
     /* ========================================================================= */
-    /* 1. PROFESSIONAL WEB AUDIO SOUND FX (BASED ON IKIGAI ARCHITECTURE)         */
-    /* Soft tactile wooden clacks, subtle hover clicks, and harmonic bells      */
+    /* 1. PROFESSIONAL WEB AUDIO SOUND FX (IDENTICAL TO IKIGAIDELHI.XYZ)         */
+    /* Includes tactile click, shogi clack, guardian hum, brush stroke & gong    */
     /* ========================================================================= */
-    let audioCtx = null;
-    let audioEnabled = false;
+    class IkigaiSoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = false;
+      }
 
-    function getAudioContext() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      getContext() {
+        if (!this.ctx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) {
+            this.ctx = new AudioContextClass();
+          }
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+        return this.ctx;
       }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
+
+      toggle() {
+        this.enabled = !this.enabled;
+        const statusLabel = document.getElementById('sound-status-label');
+        const soundBars = document.getElementById('sound-bars');
+        
+        if (this.enabled) {
+          const e = this.getContext();
+          this.playUnlockGong();
+          statusLabel.textContent = 'AUDIO [ACTIVE]';
+          soundBars.parentElement.classList.add('sound-active');
+        } else {
+          statusLabel.textContent = 'AUDIO [MUTED]';
+          soundBars.parentElement.classList.remove('sound-active');
+        }
       }
-      return audioCtx;
+
+      // Exact ikigaidelhi.xyz playHoverTick / playTactileClick
+      playHoverTick() {
+        if (!this.enabled) return;
+        let e = this.getContext();
+        if (e) try {
+          let t = e.currentTime, n = e.createOscillator(), r = e.createGain();
+          n.type = 'sine';
+          n.frequency.setValueAtTime(880, t);
+          n.frequency.exponentialRampToValueAtTime(220, t + 0.018);
+          r.gain.setValueAtTime(0.025, t);
+          r.gain.exponentialRampToValueAtTime(0.001, t + 0.02);
+          n.connect(r);
+          r.connect(e.destination);
+          n.start(t);
+          n.stop(t + 0.022);
+        } catch {}
+      }
+
+      playTactileClick() {
+        this.playHoverTick();
+      }
+
+      // Exact ikigaidelhi.xyz playShogiClack
+      playShogiClack(e = false) {
+        if (!this.enabled) return;
+        let t = this.getContext();
+        if (t) try {
+          let n = t.currentTime, r = t.createOscillator(), i = t.createGain();
+          r.type = 'sine';
+          r.frequency.setValueAtTime(e ? 680 : 940, n);
+          r.frequency.exponentialRampToValueAtTime(140, n + 0.05);
+          i.gain.setValueAtTime(e ? 0.24 : 0.18, n);
+          i.gain.exponentialRampToValueAtTime(0.001, n + 0.06);
+          let a = t.createOscillator(), o = t.createGain();
+          a.type = 'triangle';
+          a.frequency.setValueAtTime(2600, n);
+          a.frequency.exponentialRampToValueAtTime(420, n + 0.02);
+          o.gain.setValueAtTime(0.14, n);
+          o.gain.exponentialRampToValueAtTime(0.001, n + 0.025);
+          r.connect(i);
+          i.connect(t.destination);
+          a.connect(o);
+          o.connect(t.destination);
+          r.start(n);
+          a.start(n);
+          r.stop(n + 0.07);
+          a.stop(n + 0.03);
+        } catch {}
+      }
+
+      // Exact ikigaidelhi.xyz playUnlockGong (Multi-harmonic overtone chord)
+      playUnlockGong() {
+        if (!this.enabled) return;
+        let e = this.getContext();
+        if (e) try {
+          let t = e.currentTime, n = [108, 216, 324, 432, 648], r = [0.26, 0.18, 0.12, 0.08, 0.04];
+          n.forEach((n, i) => {
+            let a = e.createOscillator(), o = e.createGain();
+            a.type = 'sine';
+            a.frequency.setValueAtTime(n, t);
+            o.gain.setValueAtTime(r[i], t);
+            o.gain.exponentialRampToValueAtTime(1e-4, t + 3.2);
+            a.connect(o);
+            o.connect(e.destination);
+            a.start(t);
+            a.stop(t + 3.3);
+          });
+        } catch {}
+      }
+
+      // Exact ikigaidelhi.xyz playGuardianHum (warm meditative drone pulse)
+      playGuardianHum() {
+        if (!this.enabled) return;
+        let e = this.getContext();
+        if (e) try {
+          let t = e.currentTime, n = e.createOscillator(), r = e.createOscillator(), i = e.createGain();
+          n.type = 'sine';
+          n.frequency.setValueAtTime(216, t);
+          r.type = 'sine';
+          r.frequency.setValueAtTime(219, t);
+          i.gain.setValueAtTime(0.001, t);
+          i.gain.linearRampToValueAtTime(0.06, t + 0.25);
+          i.gain.exponentialRampToValueAtTime(0.001, t + 1.2);
+          n.connect(i);
+          r.connect(i);
+          i.connect(e.destination);
+          n.start(t);
+          r.start(t);
+          n.stop(t + 1.25);
+          r.stop(t + 1.25);
+        } catch {}
+      }
+
+      // Exact ikigaidelhi.xyz playBrushStroke (procedural organic filtered noise)
+      playBrushStroke() {
+        if (!this.enabled) return;
+        let e = this.getContext();
+        if (e) try {
+          let t = e.currentTime, n = e.sampleRate * 0.45, r = e.createBuffer(1, n, e.sampleRate), i = r.getChannelData(0);
+          for (let e = 0; e < n; e++) i[e] = Math.random() * 2 - 1;
+          let a = e.createBufferSource();
+          a.buffer = r;
+          let o = e.createBiquadFilter();
+          o.type = 'bandpass';
+          o.Q.setValueAtTime(3, t);
+          o.frequency.setValueAtTime(450, t);
+          o.frequency.exponentialRampToValueAtTime(1400, t + 0.22);
+          o.frequency.exponentialRampToValueAtTime(350, t + 0.44);
+          let s = e.createGain();
+          s.gain.setValueAtTime(0.001, t);
+          s.gain.linearRampToValueAtTime(0.12, t + 0.1);
+          s.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
+          a.connect(o);
+          o.connect(s);
+          s.connect(e.destination);
+          a.start(t);
+          a.stop(t + 0.45);
+        } catch {}
+      }
     }
+
+    const audio = new IkigaiSoundEngine();
 
     function toggleAudioSystem() {
-      audioEnabled = !audioEnabled;
-      const statusLabel = document.getElementById('sound-status-label');
-      const soundBars = document.getElementById('sound-bars');
-      
-      if (audioEnabled) {
-        getAudioContext();
-        playUnlockGong();
-        statusLabel.textContent = 'AUDIO [ACTIVE]';
-        soundBars.parentElement.classList.add('sound-active');
-      } else {
-        statusLabel.textContent = 'AUDIO [MUTED]';
-        soundBars.parentElement.classList.remove('sound-active');
-      }
+      audio.toggle();
     }
-
-    // Ikigai-inspired subtle hover tick (subtle, non-annoying)
     function playHoverTick() {
-      if (!audioEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      try {
-        const t = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(880, t);
-        osc.frequency.exponentialRampToValueAtTime(220, t + 0.018);
-        gain.gain.setValueAtTime(0.025, t);
-        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.02);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(t);
-        osc.stop(t + 0.022);
-      } catch (e) {}
+      audio.playHoverTick();
     }
-
-    // Ikigai-inspired tactile click
     function playTactileClick() {
-      playHoverTick();
+      audio.playTactileClick();
     }
-
-    // Ikigai-inspired wooden shogi clack for cards/tabs
-    function playShogiClack() {
-      if (!audioEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      try {
-        const t = ctx.currentTime;
-        const osc1 = ctx.createOscillator();
-        const gain1 = ctx.createGain();
-        osc1.type = 'sine';
-        osc1.frequency.setValueAtTime(680, t);
-        osc1.frequency.exponentialRampToValueAtTime(140, t + 0.05);
-        gain1.gain.setValueAtTime(0.18, t);
-        gain1.gain.exponentialRampToValueAtTime(0.001, t + 0.06);
-
-        const osc2 = ctx.createOscillator();
-        const gain2 = ctx.createGain();
-        osc2.type = 'triangle';
-        osc2.frequency.setValueAtTime(2400, t);
-        osc2.frequency.exponentialRampToValueAtTime(380, t + 0.02);
-        gain2.gain.setValueAtTime(0.12, t);
-        gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.025);
-
-        osc1.connect(gain1);
-        gain1.connect(ctx.destination);
-        osc2.connect(gain2);
-        gain2.connect(ctx.destination);
-
-        osc1.start(t);
-        osc2.start(t);
-        osc1.stop(t + 0.07);
-        osc2.stop(t + 0.03);
-      } catch (e) {}
+    function playShogiClack(alt = false) {
+      audio.playShogiClack(alt);
     }
-
-    // Deep ancient harmonic resonance gong (harmonic overtone series)
     function playUnlockGong() {
-      if (!audioEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      try {
-        const t = ctx.currentTime;
-        const freqs = [108, 216, 324, 432];
-        const gains = [0.22, 0.14, 0.09, 0.04];
-        freqs.forEach((f, i) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(f, t);
-          gain.gain.setValueAtTime(gains[i], t);
-          gain.gain.exponentialRampToValueAtTime(0.0001, t + 2.8);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(t);
-          osc.stop(t + 2.9);
-        });
-      } catch (e) {}
+      audio.playUnlockGong();
+    }
+    function playBrushStroke() {
+      audio.playBrushStroke();
+    }
+    function playGuardianHum() {
+      audio.playGuardianHum();
     }
 
     /* ========================================================================= */
