@@ -1,0 +1,19 @@
+{
+  "name": "sasya-air",
+  "version": "1.0.0",
+  "description": "Sasyā-Air: Ancient Mauryan Aerobiology Meets 3D Smart-Home Wellness",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "kautilya",
+    "arthashastra",
+    "3d",
+    "wellness",
+    "threejs",
+    "aerobiology"
+  ],
+  "author": "Sasyā-Air Team",
+  "license": "MIT"
+}

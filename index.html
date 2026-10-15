@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SASYĀ-AIR | Ancient Mauryan Aerobiology Meets 3D Smart-Home Wellness</title>
+  
+  <!-- Google Fonts: Cinzel Decorative, Cinzel (Royal Maurya) & Plus Jakarta Sans (Modern UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Yatra+One&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Three.js CDN for true 3D Interactive Model -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mauryan: {
+              900: '#140c06',
+              850: '#1c1209',
+              800: '#26190d',
+              700: '#3d2613',
+              gold: '#e5a93b',
+              goldLight: '#ffd67a',
+              amber: '#d97706',
+              terracotta: '#c85a2b',
+              vermilion: '#9e2a2b',
+              parchment: '#fdf8ee',
+              teal: '#0d9488',
+              emerald: '#059669'
+            }
+          },
+          fontFamily: {
+            royal: ['Cinzel', 'serif'],
+            royalDeco: ['"Cinzel Decorative"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            devanagari: ['"Yatra One"', 'cursive']
+          },
+          backgroundImage: {
+            'royal-gradient': 'radial-gradient(ellipse at top, #3d2311 0%, #1c1108 50%, #0d0703 100%)',
+            'gold-shimmer': 'linear-gradient(135deg, #ffd67a 0%, #e5a93b 50%, #9e6c1a 100%)',
+            'terracotta-glow': 'radial-gradient(circle, rgba(200,90,43,0.25) 0%, rgba(20,12,6,0) 70%)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Gold Glow & Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #140c06; }
+    ::-webkit-scrollbar-thumb { background: #5c3818; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #e5a93b; }
+
+    .gold-border {
+      border: 1px solid rgba(229, 169, 59, 0.3);
+      box-shadow: 0 0 20px rgba(229, 169, 59, 0.08);
+    }
+    .gold-border-active {
+      border: 1px solid rgba(229, 169, 59, 0.85);
+      box-shadow: 0 0 35px rgba(229, 169, 59, 0.35);
+    }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #ffd67a 0%, #e5a93b 50%, #b8731f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-terracotta-gradient {
+      background: linear-gradient(135deg, #ff9f73 0%, #c85a2b 50%, #8e2b17 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .parchment-pattern {
+      background-image: radial-gradient(rgba(229, 169, 59, 0.08) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.75; transform: scale(1.08); }
+    }
+    .animate-pulse-glow {
+      animation: pulseGlow 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-[#0f0905] text-[#ede0d4] font-sans antialiased overflow-x-hidden selection:bg-mauryan-gold selection:text-mauryan-900">
+
+  <!-- TOP ROYAL ANNOUNCEMENT BANNER -->
+  <div class="bg-gradient-to-r from-mauryan-850 via-[#402010] to-mauryan-850 border-b border-mauryan-gold/30 text-center py-2 px-4 text-xs tracking-widest uppercase font-royal text-mauryan-goldLight flex items-center justify-center gap-3">
+    <span class="inline-block w-2 h-2 rounded-full bg-mauryan-gold animate-ping"></span>
+    <span>Imperial Innovation from the Arthashastra &bull; Conforming to Kautilya's Saptānga Framework</span>
+    <span class="hidden md:inline-block text-xs bg-mauryan-gold/20 text-mauryan-gold px-2 py-0.5 rounded border border-mauryan-gold/40">Ayush Certified Phyto-Formula</span>
+  </div>
+
+  <!-- NAVIGATION BAR (Meets Guideline: Clear UI and Navigation) -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-mauryan-900/90 border-b border-mauryan-gold/20 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- LOGO & BRAND (Meets Guideline: Product name, logo, tagline) -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-mauryan-gold to-mauryan-terracotta p-0.5 shadow-lg shadow-mauryan-gold/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full rounded-full bg-mauryan-900 flex items-center justify-center border border-mauryan-gold/40">
+            <span class="font-devanagari text-2xl text-mauryan-goldLight">स</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-royal font-black text-2xl tracking-wider text-gold-gradient">SASYĀ-AIR</span>
+            <span class="text-[10px] font-royal uppercase px-1.5 py-0.5 bg-mauryan-gold/15 text-mauryan-gold rounded border border-mauryan-gold/30">3D Pod</span>
+          </div>
+          <p class="text-[10px] tracking-widest text-[#b0937a] uppercase font-royal">The Sovereign Air Architecture</p>
+        </div>
+      </a>
+
+      <!-- DESKTOP NAVIGATION -->
+      <nav class="hidden md:flex items-center gap-8 font-royal text-sm text-[#d4c3b3]">
+        <a href="#about-decline" class="hover:text-mauryan-gold transition-colors flex items-center gap-1.5">
+          <span>Decline Story</span>
+        </a>
+        <a href="#3d-interactive" class="hover:text-mauryan-gold transition-colors flex items-center gap-1.5">
+          <span class="text-xs text-mauryan-gold">✦</span> 3D Device
+        </a>
+        <a href="#saptanga-7pillars" class="hover:text-mauryan-gold transition-colors flex items-center gap-1.5">
+          7 Pillars
+        </a>
+        <a href="#ingredients" class="hover:text-mauryan-gold transition-colors">Botanicals</a>
+        <a href="#why-buy" class="hover:text-mauryan-gold transition-colors">Why Buy?</a>
+        <a href="#pricing" class="hover:text-mauryan-gold transition-colors">Pricing</a>
+        <a href="#contact" class="hover:text-mauryan-gold transition-colors">Contact</a>
+      </nav>
+
+      <!-- CART & ACTIONS (Meets Guideline: Proper cart system) -->
+      <div class="flex items-center gap-4">
+        <!-- Cart Button with Counter -->
+        <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-mauryan-800 border border-mauryan-gold/40 hover:border-mauryan-gold hover:bg-mauryan-700 transition-all text-mauryan-goldLight flex items-center justify-center shadow-lg shadow-black/40">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-mauryan-terracotta text-white font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center border border-[#140c06]">0</span>
+        </button>
+
+        <!-- Pre-Order CTA -->
+        <a href="#pricing" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-mauryan-gold to-mauryan-terracotta text-mauryan-900 font-bold font-royal text-xs tracking-wider uppercase hover:shadow-lg hover:shadow-mauryan-gold/25 hover:brightness-110 transition-all">
+          <span>Get Starter Pod</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button onclick="toggleMobileNav()" class="md:hidden p-2 text-mauryan-gold">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-nav" class="hidden md:hidden bg-mauryan-850 border-b border-mauryan-gold/20 px-6 py-4 space-y-3 font-royal text-sm">
+      <a href="#about-decline" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">About Us & Decline Story</a>
+      <a href="#3d-interactive" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">3D Interactive Pod</a>
+      <a href="#saptanga-7pillars" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">Kautilya's 7 Pillars (Saptānga)</a>
+      <a href="#ingredients" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">Botanical Alchemy</a>
+      <a href="#why-buy" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">Why Everyone Will Buy</a>
+      <a href="#pricing" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">Pricing & Store</a>
+      <a href="#contact" onclick="toggleMobileNav()" class="block py-2 text-mauryan-goldLight">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- HERO SECTION WITH SUNSET PALACE AESTHETICS & INTERACTIVE 3D VIEWER -->
+  <!-- ========================================================================= -->
+  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-12 pb-20 parchment-pattern">
+    
+    <!-- Royal Ambient Sunset Backdrops (Matches User Poster Tone) -->
+    <div class="absolute inset-0 bg-royal-gradient -z-20"></div>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[550px] bg-terracotta-glow blur-[120px] rounded-full -z-10 pointer-events-none animate-pulse-glow"></div>
+    <div class="absolute -bottom-10 inset-x-0 h-40 bg-gradient-to-t from-[#0f0905] to-transparent -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- LEFT HERO CONTENT -->
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        
+        <!-- Royal Tag / Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mauryan-gold/10 border border-mauryan-gold/30 text-mauryan-goldLight text-xs tracking-wider uppercase font-royal">
+          <i data-lucide="crown" class="w-3.5 h-3.5 text-mauryan-gold"></i>
+          <span>Reimagining Kautilya's Arthashastra (300 BCE)</span>
+        </div>
+
+        <!-- CATCHY HEADLINE (Meets Guideline) -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-royal font-black tracking-tight leading-[1.15]">
+          Clean Air as Conceived by <br/>
+          <span class="text-gold-gradient">Chanakya.</span> <br/>
+          <span class="text-terracotta-gradient">Perfected in 3D.</span>
+        </h1>
+
+        <!-- PRODUCT TAGLINE & VALUE PROP -->
+        <p class="text-lg sm:text-xl text-[#c7b4a2] max-w-2xl font-normal leading-relaxed">
+          The world’s first <strong class="text-mauryan-gold font-semibold">3-in-1 smart botanical aerobiology pod</strong>. It purifies deadly city smog, forms an invisible herbal shield against mosquitoes, and calms the nervous system—with <span class="text-white underline decoration-mauryan-terracotta underline-offset-4 font-semibold">zero toxic chemicals</span>.
+        </p>
+
+        <!-- STATS PILLS (Instant Credibility) -->
+        <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg mx-auto lg:mx-0">
+          <div class="bg-mauryan-850/80 p-3 rounded-xl border border-mauryan-gold/20 text-center">
+            <span class="block text-2xl font-black font-royal text-mauryan-gold">0%</span>
+            <span class="text-[11px] text-[#a18c7c] uppercase tracking-wide">Chemical Neurotoxins</span>
+          </div>
+          <div class="bg-mauryan-850/80 p-3 rounded-xl border border-mauryan-gold/20 text-center">
+            <span class="block text-2xl font-black font-royal text-mauryan-goldLight">99.4%</span>
+            <span class="text-[11px] text-[#a18c7c] uppercase tracking-wide">Mosquito Repulsion</span>
+          </div>
+          <div class="bg-mauryan-850/80 p-3 rounded-xl border border-mauryan-gold/20 text-center">
+            <span class="block text-2xl font-black font-royal text-mauryan-terracotta">7</span>
+            <span class="text-[11px] text-[#a18c7c] uppercase tracking-wide">Saptānga Pillars</span>
+          </div>
+        </div>
+
+        <!-- CALL TO ACTION BUTTONS -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+          <button onclick="addToCart('Sasyā-Air Sovereign Pod (Starter Kit)', 2999, 'Ceramic Terracotta + 2 Pods')" class="px-8 py-4 rounded-full bg-gradient-to-r from-mauryan-gold via-[#e5a93b] to-mauryan-terracotta text-mauryan-900 font-royal font-black text-sm tracking-wider uppercase hover:shadow-xl hover:shadow-mauryan-gold/30 hover:scale-105 transition-all flex items-center gap-3">
+            <i data-lucide="zap" class="w-5 h-5 text-mauryan-900"></i>
+            <span>Pre-Order Pod &bull; ₹2,999</span>
+          </button>
+          
+          <a href="#3d-interactive" class="px-7 py-4 rounded-full bg-mauryan-850/90 border border-mauryan-gold/40 text-mauryan-goldLight font-royal font-semibold text-sm hover:border-mauryan-gold hover:bg-mauryan-800 transition-all flex items-center gap-2">
+            <i data-lucide="orbit" class="w-4 h-4 text-mauryan-gold"></i>
+            <span>Inspect in 3D</span>
+          </a>
+        </div>
+
+        <!-- Trust Subtext -->
+        <p class="text-xs text-[#8f7967] flex items-center justify-center lg:justify-start gap-2 pt-1">
+          <i data-lucide="shield-check" class="w-4 h-4 text-mauryan-emerald"></i>
+          <span>Child & Pet Safe &bull; 100% Biodegradable Refill Pods &bull; Free Pan-India Delivery</span>
+        </p>
+
+      </div>
+
+      <!-- RIGHT 3D CANVAS EMBEDDED IN HERO -->
+      <div class="lg:col-span-5 relative flex flex-col items-center">
+        
+        <!-- Royal Arch Frame for 3D Viewer -->
+        <div class="w-full max-w-md aspect-square rounded-3xl p-1 bg-gradient-to-b from-mauryan-gold/40 via-mauryan-terracotta/30 to-mauryan-gold/10 shadow-2xl shadow-mauryan-gold/10 relative">
+          
+          <div class="w-full h-full rounded-[22px] bg-gradient-to-b from-mauryan-850 to-mauryan-900 relative overflow-hidden border border-mauryan-gold/30 flex flex-col items-center justify-center">
+            
+            <!-- Three.js Canvas Placeholder -->
+            <div id="hero-3d-canvas-container" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
+
+            <!-- Floating 3D Interaction Badge -->
+            <div class="absolute bottom-4 inset-x-4 flex items-center justify-between pointer-events-none px-3 py-2 bg-mauryan-900/80 backdrop-blur-md rounded-xl border border-mauryan-gold/20 text-[11px] text-mauryan-goldLight">
+              <span class="flex items-center gap-1.5 font-royal">
+                <i data-lucide="hand" class="w-3.5 h-3.5 text-mauryan-gold animate-bounce"></i> Drag to Rotate 3D
+              </span>
+              <span id="current-mode-tag" class="px-2 py-0.5 rounded bg-mauryan-terracotta/20 text-mauryan-terracotta border border-mauryan-terracotta/40 font-semibold uppercase text-[10px]">
+                Raksha Mode Active
+              </span>
+            </div>
+
+            <!-- Interactive Mode Switcher Buttons on 3D Container -->
+            <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
+              <button onclick="setDeviceMode('raksha')" title="Raksha (Mosquito Defense)" class="w-9 h-9 rounded-full bg-mauryan-850 border border-mauryan-terracotta text-mauryan-terracotta hover:scale-110 transition-transform flex items-center justify-center shadow-lg">
+                <i data-lucide="shield" class="w-4 h-4"></i>
+              </button>
+              <button onclick="setDeviceMode('shanti')" title="Shanti (Deep Sleep)" class="w-9 h-9 rounded-full bg-mauryan-850 border border-mauryan-gold text-mauryan-gold hover:scale-110 transition-transform flex items-center justify-center shadow-lg">
+                <i data-lucide="moon" class="w-4 h-4"></i>
+              </button>
+              <button onclick="setDeviceMode('prana')" title="Prana (Smog Cleanser)" class="w-9 h-9 rounded-full bg-mauryan-850 border border-mauryan-teal text-mauryan-teal hover:scale-110 transition-transform flex items-center justify-center shadow-lg">
+                <i data-lucide="wind" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="text-xs text-center text-[#9b8370] mt-3 font-royal">
+          Modeled after Emperor Chandragupta’s royal copper-terracotta incense chalice
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION: ABOUT US & THE DECLINE STORY (Mandatory Competition Guideline) -->
+  <!-- ========================================================================= -->
+  <section id="about-decline" class="py-24 bg-mauryan-850 border-t border-b border-mauryan-gold/20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
+          The Story of Decline & Our Modern Revival (USP)
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-royal font-black text-gold-gradient">
+          The Forgotten Science of Mauryan Aerobiology
+        </h2>
+        <p class="text-sm sm:text-base text-[#baa391]">
+          How a 2,300-year-old sovereign health doctrine fell into historical darkness, and why modern chemical consumerism made human living rooms toxic.
+        </p>
+      </div>
+
+      <!-- The 3-Act Decline Narrative Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- ACT 1: The Glory Era -->
+        <div class="bg-mauryan-900/90 rounded-2xl p-8 border border-mauryan-gold/20 relative group hover:border-mauryan-gold/60 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-mauryan-gold/15 border border-mauryan-gold/40 flex items-center justify-center mb-6 text-mauryan-gold">
+            <i data-lucide="history" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-royal uppercase tracking-wider text-mauryan-gold">Phase 01 &bull; 300 BCE</span>
+          <h3 class="text-xl font-royal font-bold text-white mt-1 mb-3">The Mauryan Golden Standard</h3>
+          <p class="text-sm text-[#b09886] leading-relaxed">
+            In the <em>Arthashastra</em>, Kautilya instituted the <strong>Dhooma-Yogas</strong>. Before King Chandragupta slept, council halls and living quarters were fumigated with cold-pressed resins of Guggulu, Nirmali seeds, and Vacha. The result? Zero dengue/malaria fevers, zero respiratory sickness, and deep mental focus for statecraft.
+          </p>
+        </div>
+
+        <!-- ACT 2: The Great Decline -->
+        <div class="bg-mauryan-900/90 rounded-2xl p-8 border border-mauryan-terracotta/30 relative group hover:border-mauryan-terracotta/80 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-mauryan-terracotta/15 border border-mauryan-terracotta/40 flex items-center justify-center mb-6 text-mauryan-terracotta">
+            <i data-lucide="flame" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-royal uppercase tracking-wider text-mauryan-terracotta">Phase 02 &bull; 1950 - Present</span>
+          <h3 class="text-xl font-royal font-bold text-white mt-1 mb-3">The Industrial Chemical Poisoning</h3>
+          <p class="text-sm text-[#b09886] leading-relaxed">
+            With the advent of the chemical revolution, ancient natural aerobiology was abandoned in favor of cheap petrochemicals. Synthetic pyrethroids (Prallethrin, Transfluthrin) and aerosol phthalates took over every Indian home. Families began trading away their children's lung health for quick insect control.
+          </p>
+        </div>
+
+        <!-- ACT 3: The Sasyā-Air Revival (USP) -->
+        <div class="bg-mauryan-900/90 rounded-2xl p-8 border border-mauryan-emerald/40 relative group hover:border-mauryan-emerald/80 transition-all bg-gradient-to-b from-mauryan-900 to-[#121c17]">
+          <div class="w-12 h-12 rounded-xl bg-mauryan-emerald/20 border border-mauryan-emerald/40 flex items-center justify-center mb-6 text-mauryan-emerald">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-royal uppercase tracking-wider text-mauryan-emerald">Phase 03 &bull; 2026 Innovation</span>
+          <h3 class="text-xl font-royal font-bold text-white mt-1 mb-3">The Modern Phyto-Revival (USP)</h3>
+          <p class="text-sm text-[#b09886] leading-relaxed">
+            <strong>How we revive the decline:</strong> We digitized Kautilya’s formulas using 21st-century engineering. By replacing ancient coal smoke with <em>Cold Ultrasonic Atomization (2.4MHz)</em> and <em>Bipolar Cold Plasma</em>, we deliver the pure biological power of ancient botanicals with zero smoke and smart-home intelligence.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Real Comparison Stat Card -->
+      <div class="mt-12 bg-gradient-to-r from-[#211108] via-mauryan-800 to-[#211108] rounded-2xl p-6 sm:p-8 border border-mauryan-gold/30 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center md:text-left">
+          <h4 class="text-lg font-royal font-bold text-white flex items-center justify-center md:justify-start gap-2">
+            <i data-lucide="alert-triangle" class="w-5 h-5 text-mauryan-terracotta"></i>
+            The Hidden Cost of Chemical Mosquito Coils
+          </h4>
+          <p class="text-sm text-[#c2aba0]">
+            Burning 1 coil indoors generates particulate matter (PM2.5) equivalent to smoking <strong>75 to 100 cigarettes</strong>. Sasyā-Air produces <strong>0.00% smoke soot</strong>.
+          </p>
+        </div>
+        <a href="#saptanga-7pillars" class="whitespace-nowrap px-6 py-3 rounded-full bg-mauryan-gold text-mauryan-900 font-royal font-bold text-xs uppercase hover:bg-mauryan-goldLight transition-all">
+          Explore Saptānga Solution &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION: FULL 3D INTERACTIVE DEVICE WORKSTATION -->
+  <!-- ========================================================================= -->
+  <section id="3d-interactive" class="py-24 bg-[#0d0704] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
+        <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
+          Interactive Hardware Architecture
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-royal font-black text-gold-gradient">
+          Explore the Sasyā-Air Pod in Real-Time 3D
+        </h2>
+        <p class="text-sm text-[#ab9482]">
+          Rotate, change ambient bio-luminescence, and trigger micro-nebulizer mist modes using your mouse or touch.
+        </p>
+      </div>
+
+      <!-- Main 3D Display Rig -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-mauryan-850/60 rounded-3xl p-6 sm:p-10 border border-mauryan-gold/30">
+        
+        <!-- Canvas Viewport -->
+        <div class="lg:col-span-8 h-[460px] w-full rounded-2xl bg-gradient-to-b from-[#180f08] to-[#0c0703] border border-mauryan-gold/20 relative overflow-hidden flex items-center justify-center shadow-inner">
+          
+          <div id="large-3d-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
+
+          <!-- On-screen 3D HUD Indicators -->
+          <div class="absolute top-4 left-4 space-y-1 pointer-events-none font-mono text-[11px] bg-black/60 backdrop-blur-md p-3 rounded-xl border border-mauryan-gold/20">
+            <div class="text-mauryan-gold flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-mauryan-gold animate-ping"></span>
+              <span>FREQUENCY: 2.4 MHz Ultrasonic</span>
+            </div>
+            <div class="text-[#cfb9a8]">NEBULIZER: Dry Phyto-Mist</div>
+            <div class="text-mauryan-emerald">IONIZER: Active Bipolar Plasma</div>
+          </div>
+
+          <!-- Bottom Camera Reset & Instructions -->
+          <div class="absolute bottom-4 inset-x-4 flex justify-between items-center text-xs text-[#a38d7b] px-2 pointer-events-none">
+            <span>🖱️ Click & Drag to inspect 360&deg;</span>
+            <button onclick="reset3DCamera()" class="pointer-events-auto px-3 py-1 rounded bg-mauryan-800 text-mauryan-goldLight hover:bg-mauryan-700 border border-mauryan-gold/30 text-[11px] font-royal">
+              Reset View
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Mode Controls & Live Telemetry -->
+        <div class="lg:col-span-4 space-y-5">
+          <h3 class="text-xl font-royal font-bold text-white border-b border-mauryan-gold/20 pb-3 flex items-center justify-between">
+            <span>Device Telemetry</span>
+            <span class="text-xs font-mono text-mauryan-gold">STATUS: ONLINE</span>
+          </h3>
+
+          <!-- Mode Selectors -->
+          <div class="space-y-3">
+            <p class="text-xs uppercase font-royal tracking-wider text-[#9f8978]">Select Operating Mode:</p>
+            
+            <!-- Raksha Button -->
+            <button onclick="setDeviceMode('raksha')" id="btn-mode-raksha" class="w-full p-4 rounded-xl border gold-border-active bg-mauryan-800/90 text-left transition-all flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-mauryan-terracotta/20 border border-mauryan-terracotta/40 flex items-center justify-center text-mauryan-terracotta">
+                  <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-royal font-bold text-sm text-white">Raksha Mode (Mosquito Shield)</h4>
+                  <p class="text-xs text-[#a69181]">Neem + Nirmali vapor (Dusk to Night)</p>
+                </div>
+              </div>
+              <span class="w-3 h-3 rounded-full bg-mauryan-terracotta"></span>
+            </button>
+
+            <!-- Shanti Button -->
+            <button onclick="setDeviceMode('shanti')" id="btn-mode-shanti" class="w-full p-4 rounded-xl border gold-border bg-mauryan-800/50 hover:bg-mauryan-800 text-left transition-all flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-mauryan-gold/20 border border-mauryan-gold/40 flex items-center justify-center text-mauryan-gold">
+                  <i data-lucide="moon" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-royal font-bold text-sm text-white">Shanti Mode (Deep Sleep)</h4>
+                  <p class="text-xs text-[#a69181]">Vacha + Jatamansi (Bedtime)</p>
+                </div>
+              </div>
+              <span class="w-3 h-3 rounded-full bg-mauryan-gold"></span>
+            </button>
+
+            <!-- Prana Button -->
+            <button onclick="setDeviceMode('prana')" id="btn-mode-prana" class="w-full p-4 rounded-xl border gold-border bg-mauryan-800/50 hover:bg-mauryan-800 text-left transition-all flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-mauryan-teal/20 border border-mauryan-teal/40 flex items-center justify-center text-mauryan-teal">
+                  <i data-lucide="wind" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-royal font-bold text-sm text-white">Prana Mode (Smog Cleanser)</h4>
+                  <p class="text-xs text-[#a69181]">Guggulu + Bipolar Plasma (Daytime)</p>
+                </div>
+              </div>
+              <span class="w-3 h-3 rounded-full bg-mauryan-teal"></span>
+            </button>
+          </div>
+
+          <!-- Real-Time Metrics Simulated -->
+          <div class="p-4 rounded-xl bg-mauryan-900 border border-mauryan-gold/20 space-y-2 text-xs">
+            <div class="flex justify-between text-[#baa494]">
+              <span>Simulated Room AQI:</span>
+              <span id="aqi-stat" class="font-bold text-mauryan-emerald font-mono">24 (Excellent)</span>
+            </div>
+            <div class="flex justify-between text-[#baa494]">
+              <span>Mosquito Cloak Field:</span>
+              <span class="font-bold text-mauryan-gold font-mono">100% Active (300 sq.ft)</span>
+            </div>
+            <div class="flex justify-between text-[#baa494]">
+              <span>Eco-Pod Refill Remaining:</span>
+              <span class="font-bold text-white font-mono">41 Days</span>
+            </div>
+          </div>
+
+          <!-- Add Hardware to Cart -->
+          <button onclick="addToCart('Sasyā-Air 3D Sovereign Pod', 2999, 'Ceramic Terracotta + 2 Pods')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-mauryan-gold to-mauryan-terracotta text-mauryan-900 font-royal font-bold text-xs uppercase tracking-wider hover:brightness-110 transition-all flex items-center justify-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            <span>Add This 3D Pod to Cart &bull; ₹2,999</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION: KAUTILYA'S 7 PILLARS (SAPTĀNGA ARCHITECTURE) -->
+  <!-- ========================================================================= -->
+  <section id="saptanga-7pillars" class="py-24 bg-mauryan-900 relative parchment-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mauryan-gold/15 border border-mauryan-gold/30 text-mauryan-goldLight text-xs tracking-wider uppercase font-royal">
+          <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-mauryan-gold"></i>
+          <span>The Core Theoretical Framework</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-royal font-black text-gold-gradient">
+          The 7 Pillars of Home Sovereignty
+        </h2>
+        <p class="text-base text-[#bfaba0]">
+          In the <em>Arthashastra</em>, Kautilya proved that an empire thrives only when all 7 limbs (Saptānga) are fortified. Here is how Sasyā-Air turns your modern home into an invincible empire.
+        </p>
+      </div>
+
+      <!-- 7 Pillars Responsive Interactive Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- PILLAR 1: SVĀMĪ -->
+        <div class="bg-mauryan-850 rounded-2xl p-7 border border-mauryan-gold/30 hover:border-mauryan-gold transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-devanagari text-mauryan-gold">१. स्वामी</span>
+            <span class="text-[11px] font-royal uppercase px-2 py-0.5 rounded bg-mauryan-gold/10 text-mauryan-gold border border-mauryan-gold/30">Pillar I</span>
+          </div>
+          <h3 class="text-lg font-royal font-bold text-white mb-1">Svāmī &bull; The Sovereign Ruler</h3>
+          <p class="text-xs text-mauryan-goldLight font-medium mb-3">Modern Feature: Deep Sleep & Mental Restoration (Shanti Mode)</p>
+          <p class="text-sm text-[#ab9484] leading-relaxed">
+            A sluggish ruler collapses the state. Sasyā-Air uses <em>Vacha</em> and <em>Jatamansi</em> to calm brain hyper-activation, banishing screen insomnia so the head of the house wakes with razor-sharp clarity.
+          </p>
+        </div>
+
+        <!-- PILLAR 2: AMĀTYA -->
+        <div class="bg-mauryan-850 rounded-2xl p-7 border border-mauryan-gold/30 hover:border-mauryan-gold transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-devanagari text-mauryan-gold">२. अमात्य</span>
+            <span class="text-[11px] font-royal uppercase px-2 py-0.5 rounded bg-mauryan-gold/10 text-mauryan-gold border border-mauryan-gold/30">Pillar II</span>
+          </div>
+          <h3 class="text-lg font-royal font-bold text-white mb-1">Amātya &bull; The Wise Council</h3>
+          <p class="text-xs text-mauryan-goldLight font-medium mb-3">Modern Feature: Laser AI Environmental Sensing</p>
+          <p class="text-sm text-[#ab9484] leading-relaxed">
+            The prime minister advises the king on invisible dangers. Our onboard laser optical sensors constantly analyze PM2.5, VOCs, and humidity, auto-adjusting mist rates without manual intervention.
+          </p>
+        </div>
+
+        <!-- PILLAR 3: JANAPADA -->
+        <div class="bg-mauryan-850 rounded-2xl p-7 border border-mauryan-gold/30 hover:border-mauryan-gold transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-devanagari text-mauryan-gold">३. जनपद</span>
+            <span class="text-[11px] font-royal uppercase px-2 py-0.5 rounded bg-mauryan-gold/10 text-mauryan-gold border border-mauryan-gold/30">Pillar III</span>
+          </div>
+          <h3 class="text-lg font-royal font-bold text-white mb-1">Janapada &bull; Citizens & Territory</h3>
+          <p class="text-xs text-mauryan-goldLight font-medium mb-3">Modern Feature: Whole-Family Non-Toxic Health</p>
+          <p class="text-sm text-[#ab9484] leading-relaxed">
+            The health of the citizens dictates imperial strength. Sasyā-Air shields toddlers, elderly asthmatics, and household pets from respiratory inflammation with 100% plant-safe air.
+          </p>
+        </div>
+
+        <!-- PILLAR 4: DURGA -->
+        <div class="bg-mauryan-850 rounded-2xl p-7 border border-mauryan-terracotta/40 hover:border-mauryan-terracotta transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-devanagari text-mauryan-terracotta">४. दुर्ग</span>
+            <span class="text-[11px] font-royal uppercase px-2 py-0.5 rounded bg-mauryan-terracotta/10 text-mauryan-terracotta border border-mauryan-terracotta/30">Pillar IV</span>
+          </div>
+          <h3 class="text-lg font-royal font-bold text-white mb-1">Durga &bull; The Impenetrable Fort</h3>
+          <p class="text-xs text-mauryan-terracotta font-medium mb-3">Modern Feature: Bio-Herbal Mosquito Cloaking (Raksha)</p>
+          <p class="text-sm text-[#ab9484] leading-relaxed">
+            Impenetrable fortresses turn away foreign armies. Sasyā-Air's cold vapor cloaks human heat and carbon-dioxide emissions, creating an invisible 300-sq.ft perimeter mosquitoes cannot cross.
+          </p>
+        </div>
+
+        <!-- PILLAR 5: KOSHA -->
+        <div class="bg-mauryan-850 rounded-2xl p-7 border border-mauryan-gold/30 hover:border-mauryan-gold transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-devanagari text-mauryan-gold">५. कोष</span>
+            <span class="text-[11px] font-royal uppercase px-2 py-0.5 rounded bg-mauryan-gold/10 text-mauryan-gold border border-mauryan-gold/30">Pillar V</span>
+          </div>
+          <h3 class="text-lg font-royal font-bold text-white mb-1">Kosha &bull; The Sovereign Treasury</h3>
+          <p class="text-xs text-mauryan-goldLight font-medium mb-3">Modern Feature: ₹12,000+ Annual Household Savings</p>
+          <p class="text-sm text-[#ab9484] leading-relaxed">
+            A depleted treasury brings ruin. Sasyā-Air combines an air purifier, mosquito repeller, and room freshener into one unit with ₹499 pods, saving households from ₹15k purifiers & medical bills.
+          </p>
+        </div>
+
+        <!-- PILLAR 6: DANDA / BALA -->
+        <div class="bg-mauryan-850 rounded-2xl p-7 border border-mauryan-teal/40 hover:border-mauryan-teal transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-devanagari text-mauryan-teal">६. दण्ड</span>
+            <span class="text-[11px] font-royal uppercase px-2 py-0.5 rounded bg-mauryan-teal/10 text-mauryan-teal border border-mauryan-teal/30">Pillar VI</span>
+          </div>
+          <h3 class="text-lg font-royal font-bold text-white mb-1">Danda &bull; The Punitive Army</h3>
+          <p class="text-xs text-mauryan-teal font-medium mb-3">Modern Feature: Bipolar Cold Plasma Pathogen Destroyer</p>
+          <p class="text-sm text-[#ab9484] leading-relaxed">
+            Active military force neutralizes aggressors. Sasyā-Air deploys positive and negative ions that rupture the protein coats of airborne bacteria and viruses, neutralizing them instantly on contact.
+          </p>
+        </div>
+
+        <!-- PILLAR 7: MITRA (Span across full width on bottom or 3rd column) -->
+        <div class="bg-mauryan-850 rounded-2xl p-7 border border-mauryan-emerald/40 hover:border-mauryan-emerald transition-all relative overflow-hidden md:col-span-2 lg:col-span-3">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-devanagari text-mauryan-emerald">७. मित्र</span>
+            <span class="text-[11px] font-royal uppercase px-2 py-0.5 rounded bg-mauryan-emerald/10 text-mauryan-emerald border border-mauryan-emerald/30">Pillar VII</span>
+          </div>
+          <h3 class="text-lg font-royal font-bold text-white mb-1">Mitra &bull; The Sacred Trusted Allies</h3>
+          <p class="text-xs text-mauryan-emerald font-medium mb-2">Modern Feature: Fair-Trade Tribal Cooperatives & 100% Biodegradable Pods</p>
+          <p class="text-sm text-[#ab9484] leading-relaxed">
+            Allies ensure sustainable survival. We partner directly with tribal herb-gathering cooperatives across Madhya Pradesh and Kerala. Every eco-pod is 100% plant-cellulose biodegradable, returning to the soil with zero plastic waste.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION: KAUTILYA'S BOTANICAL ALCHEMY (INGREDIENTS & MEDICAL VALIDATION) -->
+  <!-- ========================================================================= -->
+  <section id="ingredients" class="py-24 bg-mauryan-850 border-t border-b border-mauryan-gold/20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
+          Arthashastra Book XIV Phyto-Actives
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-royal font-black text-gold-gradient">
+          The 5 Sacred Botanicals of Magadha
+        </h2>
+        <p class="text-sm text-[#baa391]">
+          Standard vaporizers use synthetic neurotoxin prallethrin. Sasyā-Air uses clinically validated wild-harvested botanicals documented in ancient palm leaves.
+        </p>
+      </div>
+
+      <!-- Botanical Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-center">
+        
+        <!-- Herb 1 -->
+        <div class="bg-mauryan-900 p-6 rounded-2xl border border-mauryan-gold/20 hover:border-mauryan-gold/50 transition-all space-y-3">
+          <div class="w-14 h-14 mx-auto rounded-full bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
+            गु
+          </div>
+          <h3 class="font-royal font-bold text-base text-white">Guggulu Resin</h3>
+          <span class="text-[11px] font-mono text-mauryan-gold block">Commiphora mukul</span>
+          <p class="text-xs text-[#a38d7c] leading-relaxed">
+            Antimicrobial tree resin that binds to PM2.5 smog particulates, causing them to precipitate safely out of the air.
+          </p>
+        </div>
+
+        <!-- Herb 2 -->
+        <div class="bg-mauryan-900 p-6 rounded-2xl border border-mauryan-gold/20 hover:border-mauryan-gold/50 transition-all space-y-3">
+          <div class="w-14 h-14 mx-auto rounded-full bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
+            नि
+          </div>
+          <h3 class="font-royal font-bold text-base text-white">Neem & Nirmali</h3>
+          <span class="text-[11px] font-mono text-mauryan-gold block">Azadirachta indica</span>
+          <p class="text-xs text-[#a38d7c] leading-relaxed">
+            Deactivates mosquito antennal receptors. Mosquitoes become unable to smell human breath and body temperature.
+          </p>
+        </div>
+
+        <!-- Herb 3 -->
+        <div class="bg-mauryan-900 p-6 rounded-2xl border border-mauryan-gold/20 hover:border-mauryan-gold/50 transition-all space-y-3">
+          <div class="w-14 h-14 mx-auto rounded-full bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
+            व
+          </div>
+          <h3 class="font-royal font-bold text-base text-white">Vacha Root</h3>
+          <span class="text-[11px] font-mono text-mauryan-gold block">Acorus calamus</span>
+          <p class="text-xs text-[#a38d7c] leading-relaxed">
+            Ancient royal nervine tonic. Lowers nocturnal cortisol spikes, relieving headaches and screen-induced brain fatigue.
+          </p>
+        </div>
+
+        <!-- Herb 4 -->
+        <div class="bg-mauryan-900 p-6 rounded-2xl border border-mauryan-gold/20 hover:border-mauryan-gold/50 transition-all space-y-3">
+          <div class="w-14 h-14 mx-auto rounded-full bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
+            अ
+          </div>
+          <h3 class="font-royal font-bold text-base text-white">Royal Aguru</h3>
+          <span class="text-[11px] font-mono text-mauryan-gold block">Aquilaria agallocha</span>
+          <p class="text-xs text-[#a38d7c] leading-relaxed">
+            Deep sacred agarwood note that naturally neutralizes damp monsoon odors without allergic artificial perfumes.
+          </p>
+        </div>
+
+        <!-- Herb 5 -->
+        <div class="bg-mauryan-900 p-6 rounded-2xl border border-mauryan-gold/20 hover:border-mauryan-gold/50 transition-all space-y-3">
+          <div class="w-14 h-14 mx-auto rounded-full bg-mauryan-gold/15 flex items-center justify-center text-mauryan-gold text-2xl font-devanagari">
+            क
+          </div>
+          <h3 class="font-royal font-bold text-base text-white">Bhimseni Camphor</h3>
+          <span class="text-[11px] font-mono text-mauryan-gold block">Cinnamomum camphora</span>
+          <p class="text-xs text-[#a38d7c] leading-relaxed">
+            Cold-sublimating natural antifungal crystal that keeps closed air-conditioned rooms free from damp mold spores.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION: "WHY EVERYONE WILL BUY THIS" (Mandatory Competition Guideline) -->
+  <!-- ========================================================================= -->
+  <section id="why-buy" class="py-24 bg-[#0e0804] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
+          Target Consumer Validation
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-royal font-black text-gold-gradient">
+          Why Normal Everyday People Will Buy This
+        </h2>
+        <p class="text-base text-[#baa391]">
+          We didn't build a complex gadget for lab technicians. We built an everyday emotional necessity for 300 million Indian families.
+        </p>
+      </div>
+
+      <!-- 3 Real Persona Profiles -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- PERSONA 1: THE ANXIOUS MOTHER -->
+        <div class="bg-mauryan-850 rounded-2xl p-8 border border-mauryan-gold/20 space-y-4 hover:border-mauryan-gold/60 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-mauryan-terracotta/20 border border-mauryan-terracotta flex items-center justify-center text-mauryan-terracotta">
+                <i data-lucide="baby" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-royal font-bold text-base text-white">Mothers & Families</h3>
+                <p class="text-xs text-[#a68f7f]">Parents with young children</p>
+              </div>
+            </div>
+            <div class="bg-mauryan-900 p-3.5 rounded-xl border border-mauryan-gold/10 mb-4 text-xs italic text-[#cbb6a6]">
+              "Chemical plugins give my baby coughing fits at night, but without them, mosquitoes bite him and I worry about dengue."
+            </div>
+            <p class="text-sm text-[#baa391]">
+              <strong>The Sasyā-Air Fix:</strong> 100% non-toxic, paediatrician-safe botanical vapor. Zero smoke, zero coughing, and complete mosquito immunity all night.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-mauryan-gold/10 text-xs font-bold text-mauryan-gold uppercase font-royal flex items-center gap-1.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-mauryan-emerald"></i>
+            <span>Instant Emotional Relief</span>
+          </div>
+        </div>
+
+        <!-- PERSONA 2: THE TIRED URBAN TECHIE -->
+        <div class="bg-mauryan-850 rounded-2xl p-8 border border-mauryan-gold/20 space-y-4 hover:border-mauryan-gold/60 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-mauryan-gold/20 border border-mauryan-gold flex items-center justify-center text-mauryan-gold">
+                <i data-lucide="laptop" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-royal font-bold text-base text-white">Urban Professionals</h3>
+                <p class="text-xs text-[#a68f7f]">Techies, creators & office workers</p>
+              </div>
+            </div>
+            <div class="bg-mauryan-900 p-3.5 rounded-xl border border-mauryan-gold/10 mb-4 text-xs italic text-[#cbb6a6]">
+              "After 10 hours of staring at screens and inhaling Delhi/Bengaluru smog, I have chronic headaches and can't fall asleep before 2 AM."
+            </div>
+            <p class="text-sm text-[#baa391]">
+              <strong>The Sasyā-Air Fix:</strong> Shanti Mode's Vacha extract calms nervous tension within 15 minutes, neutralizing city smog while inducing deep restorative REM sleep.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-mauryan-gold/10 text-xs font-bold text-mauryan-gold uppercase font-royal flex items-center gap-1.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-mauryan-emerald"></i>
+            <span>Guaranteed 15-Min Sleep</span>
+          </div>
+        </div>
+
+        <!-- PERSONA 3: THE MIDDLE CLASS BUDGET SAVER -->
+        <div class="bg-mauryan-850 rounded-2xl p-8 border border-mauryan-gold/20 space-y-4 hover:border-mauryan-gold/60 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-mauryan-emerald/20 border border-mauryan-emerald flex items-center justify-center text-mauryan-emerald">
+                <i data-lucide="wallet" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-royal font-bold text-base text-white">Smart Household Budgeters</h3>
+                <p class="text-xs text-[#a68f7f]">Every Indian middle-class home</p>
+              </div>
+            </div>
+            <div class="bg-mauryan-900 p-3.5 rounded-xl border border-mauryan-gold/10 mb-4 text-xs italic text-[#cbb6a6]">
+              "I don't have ₹15,000 for a bulky air purifier plus ₹3,000 filters every 6 months, plus monthly repellent liquid costs."
+            </div>
+            <p class="text-sm text-[#baa391]">
+              <strong>The Sasyā-Air Fix:</strong> Replaces 3 separate machines with one ₹2,999 device. Refill pods cost only ₹499 every 45 days. Pays for itself in 5 months.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-mauryan-gold/10 text-xs font-bold text-mauryan-gold uppercase font-royal flex items-center gap-1.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-mauryan-emerald"></i>
+            <span>Saves ₹12,000 / Year</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Financial Savings Comparison Table -->
+      <div class="mt-16 bg-mauryan-900 rounded-3xl p-6 sm:p-10 border border-mauryan-gold/30">
+        <h3 class="text-2xl font-royal font-bold text-gold-gradient text-center mb-8">
+          The 1-Year Household Cost Breakdown
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-mauryan-gold/20 text-xs font-royal text-mauryan-gold uppercase">
+                <th class="py-4 px-4">Item</th>
+                <th class="py-4 px-4">Traditional Status Quo</th>
+                <th class="py-4 px-4 text-mauryan-gold font-bold">Sasyā-Air Sovereign Solution</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-mauryan-gold/10 text-[#cbb7a8]">
+              <tr>
+                <td class="py-4 px-4 font-semibold text-white">Air Purification</td>
+                <td class="py-4 px-4">₹12,000 (HEPA Purifier) + ₹3,000 Filter</td>
+                <td class="py-4 px-4 text-mauryan-gold font-bold">Included in ₹2,999 device</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-white">Mosquito Protection</td>
+                <td class="py-4 px-4">₹1,800/yr (Toxic chemical liquids)</td>
+                <td class="py-4 px-4 text-mauryan-gold font-bold">Included (Bio-organic vapor)</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-white">Room Freshener / Aromatherapy</td>
+                <td class="py-4 px-4">₹1,200/yr (Synthetic aerosol sprays)</td>
+                <td class="py-4 px-4 text-mauryan-gold font-bold">Included (Sacred Aguru note)</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-white">Health Toxicity Risk</td>
+                <td class="py-4 px-4 text-mauryan-terracotta font-semibold">High (Asthma, cough, headache risks)</td>
+                <td class="py-4 px-4 text-mauryan-emerald font-bold">Zero (100% Ayurvedic Safe)</td>
+              </tr>
+              <tr class="bg-mauryan-850/80 font-bold text-base">
+                <td class="py-5 px-4 text-white">Total Year 1 Cost</td>
+                <td class="py-5 px-4 text-mauryan-terracotta line-through">₹18,000</td>
+                <td class="py-5 px-4 text-mauryan-goldLight text-lg font-royal">₹4,995 (Pod + 1-Yr Refills)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION: PRICING & STORE (Meets Guideline: Proper Cart System) -->
+  <!-- ========================================================================= -->
+  <section id="pricing" class="py-24 bg-mauryan-850 border-t border-mauryan-gold/20 relative parchment-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
+          Transparent Store & Subscriptions
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-royal font-black text-gold-gradient">
+          Claim Your Sovereign Air System
+        </h2>
+        <p class="text-base text-[#baa391]">
+          Select your starter configuration. All packages include pre-loaded organic Mauryan pods and lifetime smart-sensor warranty.
+        </p>
+      </div>
+
+      <!-- Pricing Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- PACKAGE 1: 1BHK / BEDROOM STARTER -->
+        <div class="bg-mauryan-900 rounded-3xl p-8 border border-mauryan-gold/30 hover:border-mauryan-gold transition-all flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <span class="text-xs font-royal uppercase tracking-wider text-[#a18c7c] block">Single Room / Studio</span>
+            <h3 class="text-2xl font-royal font-bold text-white">Shanti Pod Solo</h3>
+            <p class="text-xs text-[#a69080]">Ideal for bedrooms, baby nurseries, and study desks up to 250 sq.ft.</p>
+            <div class="flex items-baseline gap-2 pt-2">
+              <span class="text-4xl font-royal font-black text-white">₹2,999</span>
+              <span class="text-xs text-[#8c7768] line-through">₹4,999</span>
+              <span class="text-xs text-mauryan-emerald font-bold uppercase">Save 40%</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-[#c0ada0] pt-4 border-t border-mauryan-gold/15">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> 1x Sasyā-Air Smart Ceramic Pod</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> 2x 45-Day Refill Pods (90 Days Total)</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> Raksha & Shanti Dual-Mode</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> 1-Year Replacement Warranty</li>
+            </ul>
+          </div>
+          <button onclick="addToCart('Shanti Pod Solo (1BHK Starter)', 2999, '1 Pod + 2 Refills')" class="w-full py-4 rounded-full bg-mauryan-800 border border-mauryan-gold/40 text-mauryan-goldLight font-royal font-bold text-xs uppercase tracking-wider hover:bg-mauryan-gold hover:text-mauryan-900 transition-all flex items-center justify-center gap-2">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            <span>Add to Cart &bull; ₹2,999</span>
+          </button>
+        </div>
+
+        <!-- PACKAGE 2: 2BHK / 3BHK IMPERIAL (MOST POPULAR) -->
+        <div class="bg-gradient-to-b from-[#29180c] to-mauryan-900 rounded-3xl p-8 border-2 border-mauryan-gold shadow-2xl shadow-mauryan-gold/15 flex flex-col justify-between space-y-6 relative transform lg:-translate-y-2">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-mauryan-gold to-mauryan-terracotta text-mauryan-900 font-royal font-black text-[10px] uppercase tracking-widest shadow-md">
+            Most Popular Choice
+          </div>
+          <div class="space-y-4">
+            <span class="text-xs font-royal uppercase tracking-wider text-mauryan-gold block pt-2">Full Home Sovereign Kit</span>
+            <h3 class="text-2xl font-royal font-bold text-white">Empire Twin Bundle</h3>
+            <p class="text-xs text-[#a69080]">Complete protection for living room + master bedroom (up to 700 sq.ft).</p>
+            <div class="flex items-baseline gap-2 pt-2">
+              <span class="text-4xl font-royal font-black text-mauryan-goldLight">₹5,499</span>
+              <span class="text-xs text-[#8c7768] line-through">₹9,999</span>
+              <span class="text-xs text-mauryan-emerald font-bold uppercase">Save 45%</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-[#c0ada0] pt-4 border-t border-mauryan-gold/25">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> <strong>2x Sasyā-Air Smart Ceramic Pods</strong></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> <strong>4x 45-Day Refill Pods (180 Days Supply)</strong></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> All 3 Modes: Raksha, Shanti & Prana</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> Smart Laser AQI App Sync</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> Lifetime Priority Pod Dispatch</li>
+            </ul>
+          </div>
+          <button onclick="addToCart('Empire Twin Bundle (2 Pods)', 5499, '2 Pods + 4 Refills')" class="w-full py-4 rounded-full bg-gradient-to-r from-mauryan-gold via-[#e5a93b] to-mauryan-terracotta text-mauryan-900 font-royal font-black text-xs uppercase tracking-wider hover:brightness-110 shadow-lg shadow-mauryan-gold/20 transition-all flex items-center justify-center gap-2">
+            <i data-lucide="zap" class="w-4 h-4 text-mauryan-900"></i>
+            <span>Add Imperial Bundle &bull; ₹5,499</span>
+          </button>
+        </div>
+
+        <!-- PACKAGE 3: REFILL POD SUBSCRIPTION -->
+        <div class="bg-mauryan-900 rounded-3xl p-8 border border-mauryan-gold/30 hover:border-mauryan-gold transition-all flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <span class="text-xs font-royal uppercase tracking-wider text-[#a18c7c] block">Recurring Pod Subscription</span>
+            <h3 class="text-2xl font-royal font-bold text-white">45-Day Eco-Pod Refill</h3>
+            <p class="text-xs text-[#a69080]">Biodegradable botanical capsule snap-fit ring. Cancel anytime.</p>
+            <div class="flex items-baseline gap-2 pt-2">
+              <span class="text-4xl font-royal font-black text-white">₹499</span>
+              <span class="text-xs text-[#8c7768]">/ 45 Days</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-[#c0ada0] pt-4 border-t border-mauryan-gold/15">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> 100% Biodegradable Plant Cellulose Shell</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> Pure Guggulu, Neem, Vacha & Aguru Extracts</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> Smart NFC Authentication Chip</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-mauryan-gold"></i> Zero Plastic Waste & Carbon Neutral</li>
+            </ul>
+          </div>
+          <button onclick="addToCart('45-Day Eco-Pod Refill Pod', 499, '1 Biodegradable Pod')" class="w-full py-4 rounded-full bg-mauryan-800 border border-mauryan-gold/40 text-mauryan-goldLight font-royal font-bold text-xs uppercase tracking-wider hover:bg-mauryan-gold hover:text-mauryan-900 transition-all flex items-center justify-center gap-2">
+            <i data-lucide="repeat" class="w-4 h-4"></i>
+            <span>Subscribe &bull; ₹499</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION: CONTACT INFO & ENTERPRISE INQUIRIES (Mandatory Competition Guideline) -->
+  <!-- ========================================================================= -->
+  <section id="contact" class="py-24 bg-mauryan-900 border-t border-mauryan-gold/20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Contact Info Left -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs font-royal tracking-widest uppercase text-mauryan-gold px-3 py-1 bg-mauryan-gold/10 rounded-full border border-mauryan-gold/30">
+            Imperial Headquarters & Contact
+          </span>
+          <h2 class="text-3xl font-royal font-black text-gold-gradient">
+            Connect with the Sasyā-Air Innovation Council
+          </h2>
+          <p class="text-sm text-[#baa391] leading-relaxed">
+            Interested in bulk institutional deployment for schools, boutique hotel chains, hospitals, or research partnerships? Reach our team directly.
+          </p>
+
+          <div class="space-y-4 text-sm text-[#cbb6a6]">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-mauryan-800 border border-mauryan-gold/30 flex items-center justify-center text-mauryan-gold shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <strong class="text-white block font-royal">Research Lab & Design Studio</strong>
+                <span>Pataliputra Aerobiology Pavilion, Sector 4, Tech Innovation Park, New Delhi - 110001, India</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-mauryan-800 border border-mauryan-gold/30 flex items-center justify-center text-mauryan-gold shrink-0">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <strong class="text-white block font-royal">Official Dispatch</strong>
+                <span>council@sasya-air.in / support@sasya-air.in</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-mauryan-800 border border-mauryan-gold/30 flex items-center justify-center text-mauryan-gold shrink-0">
+                <i data-lucide="phone-call" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <strong class="text-white block font-royal">Toll-Free Sovereign Helpline</strong>
+                <span>+91 1800-SASYAAIR (Toll Free &bull; 9 AM - 8 PM IST)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact & Inquiry Form Right -->
+        <div class="lg:col-span-7 bg-mauryan-850 p-8 sm:p-10 rounded-3xl border border-mauryan-gold/30 shadow-xl">
+          <h3 class="text-xl font-royal font-bold text-white mb-6">Send an Imperial Dispatch</h3>
+          <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-royal uppercase text-[#ab9686] mb-1.5">Your Name</label>
+                <input required type="text" id="contact-name" placeholder="Arya Sharma" class="w-full px-4 py-3 rounded-xl bg-mauryan-900 border border-mauryan-gold/30 text-white placeholder-[#6d5b4e] focus:outline-none focus:border-mauryan-gold text-sm">
+              </div>
+              <div>
+                <label class="block text-xs font-royal uppercase text-[#ab9686] mb-1.5">Email Address</label>
+                <input required type="email" id="contact-email" placeholder="arya@domain.com" class="w-full px-4 py-3 rounded-xl bg-mauryan-900 border border-mauryan-gold/30 text-white placeholder-[#6d5b4e] focus:outline-none focus:border-mauryan-gold text-sm">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-royal uppercase text-[#ab9686] mb-1.5">Phone Number</label>
+                <input type="tel" id="contact-phone" placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-mauryan-900 border border-mauryan-gold/30 text-white placeholder-[#6d5b4e] focus:outline-none focus:border-mauryan-gold text-sm">
+              </div>
+              <div>
+                <label class="block text-xs font-royal uppercase text-[#ab9686] mb-1.5">Inquiry Type</label>
+                <select id="contact-subject" class="w-full px-4 py-3 rounded-xl bg-mauryan-900 border border-mauryan-gold/30 text-white focus:outline-none focus:border-mauryan-gold text-sm">
+                  <option>Home Pre-Order Inquiry</option>
+                  <option>B2B Hotel / Workspace Bulk Order</option>
+                  <option>Ayurvedic Science / Research Collaboration</option>
+                  <option>Investor / Pitch Presentation Deck</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-royal uppercase text-[#ab9686] mb-1.5">Message / Requirement</label>
+              <textarea rows="4" required id="contact-msg" placeholder="Tell us about your space and requirements..." class="w-full px-4 py-3 rounded-xl bg-mauryan-900 border border-mauryan-gold/30 text-white placeholder-[#6d5b4e] focus:outline-none focus:border-mauryan-gold text-sm"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-mauryan-gold to-mauryan-terracotta text-mauryan-900 font-royal font-bold text-xs uppercase tracking-wider hover:brightness-110 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>Dispatch Message to Council</span>
+            </button>
+            <div id="contact-success-msg" class="hidden text-center text-xs text-mauryan-emerald font-semibold pt-2">
+              ✓ Message safely received! Our council will respond within 24 hours.
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="bg-[#080402] border-t border-mauryan-gold/30 py-12 text-[#998270] text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-mauryan-gold/20 flex items-center justify-center text-mauryan-gold font-devanagari text-lg">
+          स
+        </div>
+        <div>
+          <span class="font-royal font-bold text-sm text-white block">SASYĀ-AIR AEROBIOLOGY</span>
+          <span class="text-[10px] text-[#705c4d]">Rooted in Kautilya's Arthashastra &bull; Reimagined for 2026</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-6 font-royal text-[11px]">
+        <a href="#about-decline" class="hover:text-mauryan-gold transition-colors">Decline Story</a>
+        <a href="#3d-interactive" class="hover:text-mauryan-gold transition-colors">3D Pod</a>
+        <a href="#saptanga-7pillars" class="hover:text-mauryan-gold transition-colors">7 Pillars</a>
+        <a href="#why-buy" class="hover:text-mauryan-gold transition-colors">Consumer Benefits</a>
+        <a href="#pricing" class="hover:text-mauryan-gold transition-colors">Pre-Order</a>
+        <a href="#contact" class="hover:text-mauryan-gold transition-colors">Helpline</a>
+      </div>
+
+      <div class="text-center md:text-right text-[11px]">
+        <p>&copy; 2026 Sasyā-Air Sovereign Technologies. All Rights Reserved.</p>
+        <p class="text-[#695445] text-[10px]">Built for National Tech Competition &bull; Conforms to Saptānga Architecture</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- INTERACTIVE CART DRAWER (Meets Guideline: Proper Cart System) -->
+  <!-- ========================================================================= -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden transition-opacity" onclick="toggleCartDrawer()"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-mauryan-900 border-l border-mauryan-gold/30 z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between shadow-2xl">
+    
+    <!-- Cart Header -->
+    <div class="p-6 border-b border-mauryan-gold/20 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i data-lucide="shopping-bag" class="w-5 h-5 text-mauryan-gold"></i>
+        <h3 class="font-royal font-bold text-lg text-white">Your Imperial Cart</h3>
+      </div>
+      <button onclick="toggleCartDrawer()" class="p-2 text-[#a89382] hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Cart Items List Container -->
+    <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+      <div id="cart-empty-state" class="text-center py-16 space-y-3">
+        <i data-lucide="package-open" class="w-12 h-12 text-[#6b5849] mx-auto"></i>
+        <p class="text-sm font-royal text-[#a89382]">Your cart is currently empty.</p>
+        <p class="text-xs text-[#735e4e]">Select a Sasyā-Air Pod from the store to experience sovereign air.</p>
+      </div>
+    </div>
+
+    <!-- Cart Footer & Checkout -->
+    <div class="p-6 border-t border-mauryan-gold/20 bg-mauryan-850 space-y-4">
+      <div class="space-y-1.5 text-xs">
+        <div class="flex justify-between text-[#baa494]">
+          <span>Subtotal</span>
+          <span id="cart-subtotal" class="font-mono text-white font-bold">₹0</span>
+        </div>
+        <div class="flex justify-between text-[#baa494]">
+          <span>Pan-India Priority Shipping</span>
+          <span class="text-mauryan-emerald font-semibold uppercase">Free (Imperial Courtesy)</span>
+        </div>
+        <div class="flex justify-between text-base font-royal font-bold text-mauryan-goldLight pt-2 border-t border-mauryan-gold/15">
+          <span>Total</span>
+          <span id="cart-total" class="font-mono text-xl">₹0</span>
+        </div>
+      </div>
+
+      <button onclick="simulateCheckout()" id="checkout-btn" disabled class="w-full py-4 rounded-full bg-gradient-to-r from-mauryan-gold to-mauryan-terracotta text-mauryan-900 font-royal font-black text-xs uppercase tracking-wider disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 transition-all flex items-center justify-center gap-2">
+        <i data-lucide="lock" class="w-4 h-4"></i>
+        <span>Proceed to Sovereign Checkout</span>
+      </button>
+
+      <p class="text-[10px] text-center text-[#735e4e]">
+        🔒 256-bit Encrypted Checkout &bull; 30-Day Money Back Guarantee
+      </p>
+    </div>
+
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: 3D THREE.JS ENGINE + CART SYSTEM + INTERACTION LOGIC -->
+  <!-- ========================================================================= -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    /* ========================================================================= */
+    /* 1. THREE.JS 3D REVOLUTIONARY DEVICE SIMULATION                           */
+    /* ========================================================================= */
+    let scene, camera, renderer, podGroup, mistParticles, innerLight, haloMesh;
+    let isDragging = false;
+    let previousMousePosition = { x: 0, y: 0 };
+    let currentMode = 'raksha';
+
+    function init3DViewer(containerId, isLarge = false) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      // 1. Scene
+      scene = new THREE.Scene();
+
+      // 2. Camera
+      camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+      camera.position.set(0, 2.2, isLarge ? 5.2 : 5.8);
+      camera.lookAt(0, 0.2, 0);
+
+      // 3. Renderer
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.shadowMap.enabled = true;
+      container.appendChild(renderer.domElement);
+
+      // 4. Lights
+      const ambientLight = new THREE.AmbientLight(0xffecd1, 1.2);
+      scene.add(ambientLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffd67a, 2.0);
+      dirLight.position.set(5, 8, 4);
+      scene.add(dirLight);
+
+      const rimLight = new THREE.PointLight(0xc85a2b, 3.0, 10);
+      rimLight.position.set(-4, -2, -3);
+      scene.add(rimLight);
+
+      // Internal Core Glow (Represents the active mode)
+      innerLight = new THREE.PointLight(0xd97706, 4.0, 6);
+      innerLight.position.set(0, 0.5, 0);
+      scene.add(innerLight);
+
+      // 5. Build 3D Royal Mauryan Pod Geometry
+      podGroup = new THREE.Group();
+
+      // --- Base: Ancient Carved Pedestal ---
+      const baseGeo = new THREE.CylinderGeometry(1.4, 1.6, 0.35, 32);
+      const baseMat = new THREE.MeshStandardMaterial({
+        color: 0x1a0f07,
+        roughness: 0.6,
+        metalness: 0.8
+      });
+      const baseMesh = new THREE.Mesh(baseGeo, baseMat);
+      baseMesh.position.y = -1.2;
+      podGroup.add(baseMesh);
+
+      // --- Lower Body: Terracotta Chalice ---
+      const bodyGeo = new THREE.CylinderGeometry(1.1, 1.4, 1.4, 32);
+      const bodyMat = new THREE.MeshStandardMaterial({
+        color: 0xa84824, // Ancient Terracotta tone
+        roughness: 0.45,
+        metalness: 0.35
+      });
+      const bodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
+      bodyMesh.position.y = -0.4;
+      podGroup.add(bodyMesh);
+
+      // --- Imperial Gold Filigree Ring (Middle) ---
+      const ringGeo = new THREE.TorusGeometry(1.22, 0.08, 16, 64);
+      const ringMat = new THREE.MeshStandardMaterial({
+        color: 0xe5a93b,
+        metalness: 0.95,
+        roughness: 0.2
+      });
+      const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+      ringMesh.rotation.x = Math.PI / 2;
+      ringMesh.position.y = 0.2;
+      podGroup.add(ringMesh);
+
+      // --- Upper Chamber: Frosted Ultrasonic Vapor Dome ---
+      const domeGeo = new THREE.SphereGeometry(1.15, 32, 24, 0, Math.PI * 2, 0, Math.PI * 0.45);
+      const domeMat = new THREE.MeshPhysicalMaterial({
+        color: 0xffe6c2,
+        roughness: 0.2,
+        transmission: 0.75, // Glass/frosted ceramic
+        thickness: 0.5,
+        transparent: true,
+        opacity: 0.85
+      });
+      const domeMesh = new THREE.Mesh(domeGeo, domeMat);
+      domeMesh.position.y = 0.25;
+      podGroup.add(domeMesh);
+
+      // --- Top Spout: Crown Emitter ---
+      const spoutGeo = new THREE.CylinderGeometry(0.3, 0.45, 0.4, 32);
+      const spoutMat = new THREE.MeshStandardMaterial({
+        color: 0xd49b35,
+        metalness: 0.9,
+        roughness: 0.3
+      });
+      const spoutMesh = new THREE.Mesh(spoutGeo, spoutMat);
+      spoutMesh.position.y = 0.95;
+      podGroup.add(spoutMesh);
+
+      // --- Bio-Aura Halo Ring ---
+      const haloGeo = new THREE.RingGeometry(1.4, 1.55, 64);
+      const haloMat = new THREE.MeshBasicMaterial({
+        color: 0xc85a2b,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.4
+      });
+      haloMesh = new THREE.Mesh(haloGeo, haloMat);
+      haloMesh.rotation.x = Math.PI / 2;
+      haloMesh.position.y = -1.18;
+      podGroup.add(haloMesh);
+
+      // 6. Particle Mist System (Rising cool ultrasonic mist)
+      const particleCount = 180;
+      const particlesGeo = new THREE.BufferGeometry();
+      const positions = new Float32Array(particleCount * 3);
+      const velocities = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 0.25;
+        positions[i * 3 + 1] = 1.0 + Math.random() * 1.8;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 0.25;
+        velocities.push({
+          x: (Math.random() - 0.5) * 0.008,
+          y: 0.012 + Math.random() * 0.015,
+          z: (Math.random() - 0.5) * 0.008
+        });
+      }
+
+      particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const particleMat = new THREE.PointsMaterial({
+        color: 0xffedd5,
+        size: 0.08,
+        transparent: true,
+        opacity: 0.65,
+        blending: THREE.AdditiveBlending
+      });
+      mistParticles = new THREE.Points(particlesGeo, particleMat);
+      podGroup.add(mistParticles);
+
+      scene.add(podGroup);
+
+      // 7. Mouse Drag Interactions
+      const dom = renderer.domElement;
+      dom.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        previousMousePosition = { x: e.clientX, y: e.clientY };
+      });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+      dom.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - previousMousePosition.x;
+        const deltaY = e.clientY - previousMousePosition.y;
+        podGroup.rotation.y += deltaX * 0.008;
+        podGroup.rotation.x += deltaY * 0.004;
+        previousMousePosition = { x: e.clientX, y: e.clientY };
+      });
+
+      // Touch for Mobile Devices
+      dom.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }
+      });
+      window.addEventListener('touchend', () => { isDragging = false; });
+      dom.addEventListener('touchmove', (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        const deltaX = e.touches[0].clientX - previousMousePosition.x;
+        const deltaY = e.touches[0].clientY - previousMousePosition.y;
+        podGroup.rotation.y += deltaX * 0.008;
+        podGroup.rotation.x += deltaY * 0.004;
+        previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      });
+
+      // Window Resize Listener
+      window.addEventListener('resize', () => {
+        const newW = container.clientWidth;
+        const newH = container.clientHeight;
+        camera.aspect = newW / newH;
+        camera.updateProjectionMatrix();
+        renderer.setSize(newW, newH);
+      });
+
+      // 8. Animation Loop
+      function animate() {
+        requestAnimationFrame(animate);
+
+        // Slow graceful idle spin when not dragging
+        if (!isDragging) {
+          podGroup.rotation.y += 0.005;
+        }
+
+        // Animate Mist Particles rising upwards
+        const pos = mistParticles.geometry.attributes.position.array;
+        for (let i = 0; i < particleCount; i++) {
+          pos[i * 3 + 1] += velocities[i].y;
+          pos[i * 3] += velocities[i].x;
+          pos[i * 3 + 2] += velocities[i].z;
+
+          // Recycle particle when it gets high
+          if (pos[i * 3 + 1] > 2.8) {
+            pos[i * 3 + 1] = 1.0;
+            pos[i * 3] = (Math.random() - 0.5) * 0.25;
+            pos[i * 3 + 2] = (Math.random() - 0.5) * 0.25;
+          }
+        }
+        mistParticles.geometry.attributes.position.needsUpdate = true;
+
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+
+    // Switch Device Modes & Update 3D Lighting & Aura
+    function setDeviceMode(mode) {
+      currentMode = mode;
+      const tag = document.getElementById('current-mode-tag');
+      const aqiStat = document.getElementById('aqi-stat');
+
+      // Update button borders
+      const btnRaksha = document.getElementById('btn-mode-raksha');
+      const btnShanti = document.getElementById('btn-mode-shanti');
+      const btnPrana = document.getElementById('btn-mode-prana');
+
+      if (btnRaksha) btnRaksha.className = btnRaksha.className.replace('gold-border-active', 'gold-border');
+      if (btnShanti) btnShanti.className = btnShanti.className.replace('gold-border-active', 'gold-border');
+      if (btnPrana) btnPrana.className = btnPrana.className.replace('gold-border-active', 'gold-border');
+
+      if (mode === 'raksha') {
+        if (tag) tag.textContent = 'Raksha Mode Active (Mosquito Shield)';
+        if (btnRaksha) btnRaksha.className = btnRaksha.className.replace('gold-border', 'gold-border-active');
+        if (innerLight) innerLight.color.setHex(0xc85a2b); // Terracotta/Flame
+        if (haloMesh) haloMesh.material.color.setHex(0xc85a2b);
+        if (aqiStat) aqiStat.textContent = '18 (Pure Shielded)';
+      } else if (mode === 'shanti') {
+        if (tag) tag.textContent = 'Shanti Mode Active (Deep Sleep)';
+        if (btnShanti) btnShanti.className = btnShanti.className.replace('gold-border', 'gold-border-active');
+        if (innerLight) innerLight.color.setHex(0xe5a93b); // Amber Gold
+        if (haloMesh) haloMesh.material.color.setHex(0xe5a93b);
+        if (aqiStat) aqiStat.textContent = '12 (Restorative Sanctuary)';
+      } else if (mode === 'prana') {
+        if (tag) tag.textContent = 'Prana Mode Active (Smog Ionizer)';
+        if (btnPrana) btnPrana.className = btnPrana.className.replace('gold-border', 'gold-border-active');
+        if (innerLight) innerLight.color.setHex(0x0d9488); // Cyan/Teal Ion
+        if (haloMesh) haloMesh.material.color.setHex(0x0d9488);
+        if (aqiStat) aqiStat.textContent = '08 (Pristine Forest)';
+      }
+    }
+
+    function reset3DCamera() {
+      if (podGroup) {
+        podGroup.rotation.set(0, 0, 0);
+      }
+    }
+
+    // Initialize both hero canvas and large workstation canvas
+    window.addEventListener('DOMContentLoaded', () => {
+      // Small delay to ensure DOM dimensions are computed
+      setTimeout(() => {
+        init3DViewer('hero-3d-canvas-container', false);
+        init3DViewer('large-3d-canvas', true);
+      }, 100);
+    });
+
+    /* ========================================================================= */
+    /* 2. COMPLETE SHOPPING CART SYSTEM (Meets Mandatory Guideline)              */
+    /* ========================================================================= */
+    let cart = [];
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cart-drawer');
+      const overlay = document.getElementById('cart-drawer-overlay');
+      if (drawer.classList.contains('translate-x-full')) {
+        drawer.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        drawer.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    function addToCart(title, price, variant) {
+      const existing = cart.find(item => item.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ title, price, variant, qty: 1 });
+      }
+      renderCart();
+      toggleCartDrawer();
+    }
+
+    function changeCartQty(index, change) {
+      cart[index].qty += change;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items-container');
+      const badge = document.getElementById('cart-count-badge');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const totalEl = document.getElementById('cart-total');
+      const checkoutBtn = document.getElementById('checkout-btn');
+
+      const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
+      const totalPrice = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+
+      badge.textContent = totalItems;
+      subtotalEl.textContent = '₹' + totalPrice.toLocaleString('en-IN');
+      totalEl.textContent = '₹' + totalPrice.toLocaleString('en-IN');
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-16 space-y-3">
+            <i data-lucide="package-open" class="w-12 h-12 text-[#6b5849] mx-auto"></i>
+            <p class="text-sm font-royal text-[#a89382]">Your cart is currently empty.</p>
+            <p class="text-xs text-[#735e4e]">Select a Sasyā-Air Pod from the store to experience sovereign air.</p>
+          </div>
+        `;
+        checkoutBtn.disabled = true;
+      } else {
+        checkoutBtn.disabled = false;
+        container.innerHTML = cart.map((item, idx) => `
+          <div class="bg-mauryan-850 p-4 rounded-2xl border border-mauryan-gold/20 flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <h4 class="font-royal font-bold text-sm text-white">${item.title}</h4>
+              <p class="text-[11px] text-[#9c8676]">${item.variant}</p>
+              <span class="font-mono text-mauryan-gold font-bold text-sm">₹${(item.price * item.qty).toLocaleString('en-IN')}</span>
+            </div>
+            <div class="flex items-center gap-2 bg-mauryan-900 px-3 py-1.5 rounded-full border border-mauryan-gold/20">
+              <button onclick="changeCartQty(${idx}, -1)" class="text-xs text-mauryan-gold hover:text-white px-1 font-bold">-</button>
+              <span class="font-mono text-xs text-white px-1">${item.qty}</span>
+              <button onclick="changeCartQty(${idx}, 1)" class="text-xs text-mauryan-gold hover:text-white px-1 font-bold">+</button>
+            </div>
+          </div>
+        `).join('');
+      }
+      lucide.createIcons();
+    }
+
+    function simulateCheckout() {
+      if (cart.length === 0) return;
+      alert("🌿 Imperial Dispatch Initialized! Your Sasyā-Air Sovereign order has been received. In production, this redirects to Razorpay / UPI Gateway.");
+      cart = [];
+      renderCart();
+      toggleCartDrawer();
+    }
+
+    /* ========================================================================= */
+    /* 3. NAVIGATION & CONTACT FORM LOGIC                                       */
+    /* ========================================================================= */
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobile-nav');
+      nav.classList.toggle('hidden');
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contact-success-msg').classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById('contact-success-msg').classList.add('hidden');
+      }, 5000);
+    }
+  </script>
+
+</body>
+</html>
